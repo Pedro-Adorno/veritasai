@@ -1,0 +1,566 @@
+{
+  "generated_at": "2026-11-16T00:01:00+00:00",
+  "version": "1.0.0",
+  "dataset": {
+    "name": "Fake.br Corpus",
+    "n_raw": 7200,
+    "n_removed_duplicates": 63,
+    "n_clean": 7137,
+    "class_counts_clean": {
+      "FAKE": 3592,
+      "TRUE": 3545
+    },
+    "class_counts_raw": {
+      "FAKE": 3600,
+      "TRUE": 3600
+    },
+    "split": {
+      "treino": {
+        "n": 4995,
+        "FAKE": 2514,
+        "TRUE": 2481
+      },
+      "validação": {
+        "n": 1071,
+        "FAKE": 539,
+        "TRUE": 532
+      },
+      "teste": {
+        "n": 1071,
+        "FAKE": 539,
+        "TRUE": 532
+      }
+    },
+    "words_by_class": {
+      "FAKE": {
+        "count": 3592.0,
+        "mean": 185.5,
+        "std": 127.2,
+        "min": 9.0,
+        "25%": 115.0,
+        "50%": 157.0,
+        "75%": 224.0,
+        "max": 2286.0
+      },
+      "TRUE": {
+        "count": 3545.0,
+        "mean": 1099.5,
+        "std": 685.6,
+        "min": 20.0,
+        "25%": 639.0,
+        "50%": 914.0,
+        "75%": 1416.0,
+        "max": 7517.0
+      }
+    },
+    "artifacts_pct": {
+      "% FAKE": {
+        "BOM (\\ufeff) no início": 0.0,
+        "aspas curvas (“ ”)": 0.0,
+        "contém URL": 0.2,
+        "menciona \"g1\"": 1.0
+      },
+      "% TRUE": {
+        "BOM (\\ufeff) no início": 0.3,
+        "aspas curvas (“ ”)": 57.8,
+        "contém URL": 2.9,
+        "menciona \"g1\"": 21.8
+      }
+    },
+    "near_duplicate_pairs_ge_0.90": 67,
+    "top_domains": {
+      "FAKE": {
+        "www.diariodobrasil.org": 0.927,
+        "afolhabrasil.com.br": 0.048,
+        "www.thejornalbrasil.com.br": 0.018
+      },
+      "TRUE": {
+        "g1.globo.com": 0.639,
+        "politica.estadao.com.br": 0.209,
+        "internacional.estadao.com.br": 0.032
+      }
+    }
+  },
+  "vectorization_experiments": [
+    {
+      "config": "unigramas, min_df=3",
+      "f1_macro_cv": 0.9235,
+      "desvio": 0.0082,
+      "seg": 15.1
+    },
+    {
+      "config": "uni+bigramas, min_df=3",
+      "f1_macro_cv": 0.9353,
+      "desvio": 0.0055,
+      "seg": 20.2
+    },
+    {
+      "config": "uni+bigramas, min_df=3, stopwords",
+      "f1_macro_cv": 0.9255,
+      "desvio": 0.0064,
+      "seg": 18.6
+    },
+    {
+      "config": "uni+bigramas, min_df=5",
+      "f1_macro_cv": 0.9349,
+      "desvio": 0.0064,
+      "seg": 19.4
+    },
+    {
+      "config": "uni+bigramas, max_df=0.5",
+      "f1_macro_cv": 0.9335,
+      "desvio": 0.0057,
+      "seg": 20.7
+    },
+    {
+      "config": "uni+bigramas, max_features=20000",
+      "f1_macro_cv": 0.9327,
+      "desvio": 0.0061,
+      "seg": 20.0
+    }
+  ],
+  "selected_vectorization": {
+    "name": "uni+bigramas, min_df=3",
+    "ngram": [
+      1,
+      2
+    ],
+    "min_df": 3,
+    "max_df": 0.9,
+    "max_features": 50000
+  },
+  "model_comparison": [
+    {
+      "key": "svm",
+      "model": "Linear SVM",
+      "param": 1.0,
+      "val": {
+        "accuracy": 0.9477124183006536,
+        "f1_macro": 0.9477112786569672,
+        "precision_macro": 0.9478771347248577,
+        "recall_macro": 0.9477834195879309,
+        "per_class": {
+          "FAKE": {
+            "precision": 0.9582542694497154,
+            "recall": 0.9369202226345084,
+            "f1": 0.9474671669793621,
+            "support": 539
+          },
+          "TRUE": {
+            "precision": 0.9375,
+            "recall": 0.9586466165413534,
+            "f1": 0.9479553903345725,
+            "support": 532
+          }
+        }
+      },
+      "cv_f1_macro_mean": 0.9357219496611577,
+      "cv_f1_macro_std": 0.004417961295784414,
+      "fit_seconds": 6.9,
+      "test": {
+        "accuracy": 0.954248366013072,
+        "f1_macro": 0.9542443769993401,
+        "precision_macro": 0.9546196846931725,
+        "recall_macro": 0.9543501611170784,
+        "per_class": {
+          "FAKE": {
+            "precision": 0.9693486590038314,
+            "recall": 0.9387755102040817,
+            "f1": 0.9538171536286523,
+            "support": 539
+          },
+          "TRUE": {
+            "precision": 0.9398907103825137,
+            "recall": 0.9699248120300752,
+            "f1": 0.9546716003700277,
+            "support": 532
+          }
+        }
+      }
+    },
+    {
+      "key": "logreg",
+      "model": "Regressão Logística",
+      "param": 100.0,
+      "val": {
+        "accuracy": 0.9467787114845938,
+        "f1_macro": 0.9467785258888771,
+        "precision_macro": 0.9467913711212939,
+        "recall_macro": 0.9468069524460502,
+        "per_class": {
+          "FAKE": {
+            "precision": 0.951310861423221,
+            "recall": 0.9424860853432282,
+            "f1": 0.9468779123951537,
+            "support": 539
+          },
+          "TRUE": {
+            "precision": 0.9422718808193669,
+            "recall": 0.9511278195488722,
+            "f1": 0.9466791393826005,
+            "support": 532
+          }
+        }
+      },
+      "cv_f1_macro_mean": 0.9347266565916489,
+      "cv_f1_macro_std": 0.00411745318884388,
+      "fit_seconds": 7.6,
+      "test": {
+        "accuracy": 0.9505135387488328,
+        "f1_macro": 0.9505073254180628,
+        "precision_macro": 0.9509859695658244,
+        "recall_macro": 0.9506273801386583,
+        "per_class": {
+          "FAKE": {
+            "precision": 0.9673076923076923,
+            "recall": 0.9332096474953617,
+            "f1": 0.9499527856468366,
+            "support": 539
+          },
+          "TRUE": {
+            "precision": 0.9346642468239564,
+            "recall": 0.9680451127819549,
+            "f1": 0.951061865189289,
+            "support": 532
+          }
+        }
+      }
+    },
+    {
+      "key": "nb",
+      "model": "Multinomial Naive Bayes",
+      "param": 0.1,
+      "val": {
+        "accuracy": 0.8888888888888888,
+        "f1_macro": 0.8888885014171295,
+        "precision_macro": 0.8889634848114951,
+        "recall_macro": 0.8889390684503466,
+        "per_class": {
+          "FAKE": {
+            "precision": 0.8962264150943396,
+            "recall": 0.8812615955473099,
+            "f1": 0.8886810102899907,
+            "support": 539
+          },
+          "TRUE": {
+            "precision": 0.8817005545286506,
+            "recall": 0.8966165413533834,
+            "f1": 0.8890959925442684,
+            "support": 532
+          }
+        }
+      },
+      "cv_f1_macro_mean": 0.8772402916440155,
+      "cv_f1_macro_std": 0.006165595938259952,
+      "fit_seconds": 6.9,
+      "test": {
+        "accuracy": 0.907563025210084,
+        "f1_macro": 0.9075627028596287,
+        "precision_macro": 0.9076395912530952,
+        "recall_macro": 0.9076140025388146,
+        "per_class": {
+          "FAKE": {
+            "precision": 0.9150943396226415,
+            "recall": 0.8998144712430427,
+            "f1": 0.9073900841908326,
+            "support": 539
+          },
+          "TRUE": {
+            "precision": 0.9001848428835489,
+            "recall": 0.9154135338345865,
+            "f1": 0.907735321528425,
+            "support": 532
+          }
+        }
+      }
+    }
+  ],
+  "selected_model": {
+    "key": "logreg",
+    "name": "Regressão Logística",
+    "C": 100.0
+  },
+  "test": {
+    "accuracy": 0.9505135387488328,
+    "f1_macro": 0.9505073254180628,
+    "precision_macro": 0.9509859695658244,
+    "recall_macro": 0.9506273801386583,
+    "per_class": {
+      "FAKE": {
+        "precision": 0.9673076923076923,
+        "recall": 0.9332096474953617,
+        "f1": 0.9499527856468366,
+        "support": 539
+      },
+      "TRUE": {
+        "precision": 0.9346642468239564,
+        "recall": 0.9680451127819549,
+        "f1": 0.951061865189289,
+        "support": 532
+      }
+    },
+    "n": 1071,
+    "labels": [
+      "FAKE",
+      "TRUE"
+    ],
+    "confusion_matrix": [
+      [
+        503,
+        36
+      ],
+      [
+        17,
+        515
+      ]
+    ],
+    "roc_auc": 0.992038305411023,
+    "brier": 0.0372554395009049,
+    "ece": 0.027085732858025544,
+    "calibration_bins": [
+      {
+        "faixa": "0.5-0.6",
+        "n": 36,
+        "confianca_media": 0.5483668440043771,
+        "acuracia": 0.6666666666666666
+      },
+      {
+        "faixa": "0.6-0.7",
+        "n": 45,
+        "confianca_media": 0.6448361595973937,
+        "acuracia": 0.6
+      },
+      {
+        "faixa": "0.7-0.8",
+        "n": 64,
+        "confianca_media": 0.758883457006455,
+        "acuracia": 0.828125
+      },
+      {
+        "faixa": "0.8-0.9",
+        "n": 96,
+        "confianca_media": 0.8560820087037229,
+        "acuracia": 0.90625
+      },
+      {
+        "faixa": "0.9-1.0",
+        "n": 830,
+        "confianca_media": 0.9801387793045895,
+        "acuracia": 0.9963855421686747
+      }
+    ]
+  },
+  "errors": {
+    "false_negatives_fake_as_true": 36,
+    "false_positives_true_as_fake": 17,
+    "median_words_correct": 362,
+    "median_words_errors": 356
+  },
+  "top_terms": {
+    "FAKE": [
+      {
+        "term": "!",
+        "weight": -20.02354513215053
+      },
+      {
+        "term": "dilma",
+        "weight": -12.415686308447249
+      },
+      {
+        "term": "lula",
+        "weight": -11.350018488327361
+      },
+      {
+        "term": "através",
+        "weight": -8.804855860469527
+      },
+      {
+        "term": "poderá",
+        "weight": -8.492839071643264
+      },
+      {
+        "term": "hoje",
+        "weight": -7.865165177732025
+      },
+      {
+        "term": "está",
+        "weight": -7.6534291392789315
+      },
+      {
+        "term": "disse",
+        "weight": -7.369933736332681
+      },
+      {
+        "term": "coréia",
+        "weight": -7.327208760681852
+      },
+      {
+        "term": "coréia do",
+        "weight": -7.0299346704607855
+      },
+      {
+        "term": "informou",
+        "weight": -6.703779705674005
+      },
+      {
+        "term": "acordo com",
+        "weight": -6.694319991139329
+      },
+      {
+        "term": "de acordo",
+        "weight": -6.508999961274674
+      },
+      {
+        "term": "do brasil",
+        "weight": -5.779566055514701
+      },
+      {
+        "term": "de hoje",
+        "weight": -5.641916146602928
+      },
+      {
+        "term": "esposa",
+        "weight": -5.564759073452123
+      },
+      {
+        "term": "irá",
+        "weight": -5.445921783690224
+      },
+      {
+        "term": "disse o",
+        "weight": -5.436911388004462
+      },
+      {
+        "term": "ontem",
+        "weight": -5.411292617160797
+      },
+      {
+        "term": "declarou",
+        "weight": -5.405613935916545
+      }
+    ],
+    "TRUE": [
+      {
+        "term": "feira",
+        "weight": 17.863273565212378
+      },
+      {
+        "term": "nesta",
+        "weight": 17.602353594246303
+      },
+      {
+        "term": "mas",
+        "weight": 14.186651273304799
+      },
+      {
+        "term": "diz",
+        "weight": 11.301033397545554
+      },
+      {
+        "term": "segundo",
+        "weight": 11.259282067009726
+      },
+      {
+        "term": "g1",
+        "weight": 10.245901947204265
+      },
+      {
+        "term": "no",
+        "weight": 9.371358002635201
+      },
+      {
+        "term": "na",
+        "weight": 9.139420009284107
+      },
+      {
+        "term": "como",
+        "weight": 9.118618228953345
+      },
+      {
+        "term": "terça",
+        "weight": 9.055079265087057
+      },
+      {
+        "term": "em",
+        "weight": 8.992474570640246
+      },
+      {
+        "term": "quarta",
+        "weight": 8.891178530230343
+      },
+      {
+        "term": "à",
+        "weight": 8.865967960863378
+      },
+      {
+        "term": "quinta",
+        "weight": 8.577625862035916
+      },
+      {
+        "term": "sobre",
+        "weight": 8.308562508741085
+      },
+      {
+        "term": "2017",
+        "weight": 7.737023699797678
+      },
+      {
+        "term": "tribunal",
+        "weight": 7.610894199171716
+      },
+      {
+        "term": "por",
+        "weight": 7.281468256736079
+      },
+      {
+        "term": "terça feira",
+        "weight": 7.22932591832838
+      },
+      {
+        "term": "quarta feira",
+        "weight": 7.036597705094526
+      }
+    ]
+  },
+  "robustness": {
+    "preprocessing_ablation_val": [
+      {
+        "variante": "texto bruto (só minúsculas), sem truncar",
+        "acc_val": 0.9645,
+        "f1_macro_val": 0.9645
+      },
+      {
+        "variante": "normalizado, sem truncar",
+        "acc_val": 0.9617,
+        "f1_macro_val": 0.9617
+      },
+      {
+        "variante": "normalizado + truncado em 200 (adotado)",
+        "acc_val": 0.9468,
+        "f1_macro_val": 0.9468
+      },
+      {
+        "variante": "normalizado + truncado em 100",
+        "acc_val": 0.9281,
+        "f1_macro_val": 0.9281
+      }
+    ],
+    "length_only_baseline_val": {
+      "acc_val": 0.9412,
+      "f1_macro_val": 0.9412
+    },
+    "source_holdout": {
+      "train_domains": [
+        "www.diariodobrasil.org",
+        "g1.globo.com"
+      ],
+      "n_train": 5591,
+      "n_test": 1546,
+      "n_test_fake": 263,
+      "n_test_true": 1283,
+      "recall_FAKE": 0.5817490494296578,
+      "recall_TRUE": 0.8222915042868277,
+      "accuracy": 0.7813712807244502
+    }
+  }
+}
