@@ -1,0 +1,426 @@
+{
+  "model_name": "Regressão Logística + TF-IDF",
+  "version": "2.0.0",
+  "trained_at": "2026-11-26T02:16:52+00:00",
+  "dataset": "Fake.br Corpus",
+  "classes": [
+    "FAKE",
+    "TRUE"
+  ],
+  "config_name": "LR C=1 + máscara + sem nomes próprios",
+  "config": {
+    "C": 1,
+    "mode": "mask_names"
+  },
+  "source_balanced_weights": false,
+  "random_state": 42,
+  "selection_rule": "Maior LOSO com comprimento controlado; LR preferida salvo vantagem > 1 p.p. de outro modelo",
+  "calibration": {
+    "method": "platt",
+    "a": 0.8100416386298611,
+    "b": 0.40614726428855247,
+    "fitted_on": "previsões out-of-fold entre fontes (treino+validação)",
+    "weights": "pesos por fonte"
+  },
+  "abstention": {
+    "lo": 0.49,
+    "hi": 0.62,
+    "rule": "maior cobertura com precisão >= 0.95 em cada veredito (FAKE e TRUE) na validação; meta atingida",
+    "policy_met": true,
+    "validation": {
+      "target_precision": 0.95,
+      "chosen": {
+        "lo": 0.49,
+        "hi": 0.62,
+        "coverage": 0.8636788048552755,
+        "precision_FAKE": 0.9560878243512974,
+        "precision_TRUE": 0.9740566037735849
+      },
+      "curve_sample": [
+        {
+          "lo": 0.2,
+          "hi": 0.5,
+          "coverage": 0.6237161531279178,
+          "precision_FAKE": 0.8325434439178515,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.2,
+          "hi": 0.75,
+          "coverage": 0.3464052287581699,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.21,
+          "hi": 0.6,
+          "coverage": 0.5303454715219421,
+          "precision_FAKE": 0.9370229007633588,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.21,
+          "hi": 0.85,
+          "coverage": 0.15966386554621848,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.22,
+          "hi": 0.7,
+          "coverage": 0.4351073762838469,
+          "precision_FAKE": 0.9903147699757869,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.23,
+          "hi": 0.55,
+          "coverage": 0.5975723622782446,
+          "precision_FAKE": 0.8910034602076125,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.23,
+          "hi": 0.8,
+          "coverage": 0.2707749766573296,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.24,
+          "hi": 0.65,
+          "coverage": 0.4995331465919701,
+          "precision_FAKE": 0.978401727861771,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.25,
+          "hi": 0.5,
+          "coverage": 0.673202614379085,
+          "precision_FAKE": 0.8325434439178515,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.25,
+          "hi": 0.75,
+          "coverage": 0.39589169000933705,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.26,
+          "hi": 0.6,
+          "coverage": 0.5845004668534081,
+          "precision_FAKE": 0.9370229007633588,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.26,
+          "hi": 0.85,
+          "coverage": 0.2138188608776844,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.27,
+          "hi": 0.7,
+          "coverage": 0.4939309056956116,
+          "precision_FAKE": 0.9903147699757869,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.28,
+          "hi": 0.55,
+          "coverage": 0.6610644257703081,
+          "precision_FAKE": 0.8910034602076125,
+          "precision_TRUE": 0.9923076923076923
+        },
+        {
+          "lo": 0.28,
+          "hi": 0.8,
+          "coverage": 0.33426704014939307,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9923076923076923
+        },
+        {
+          "lo": 0.29,
+          "hi": 0.65,
+          "coverage": 0.5648926237161531,
+          "precision_FAKE": 0.978401727861771,
+          "precision_TRUE": 0.9929577464788732
+        },
+        {
+          "lo": 0.3,
+          "hi": 0.5,
+          "coverage": 0.7413632119514473,
+          "precision_FAKE": 0.8325434439178515,
+          "precision_TRUE": 0.9937888198757764
+        },
+        {
+          "lo": 0.3,
+          "hi": 0.75,
+          "coverage": 0.46405228758169936,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9937888198757764
+        },
+        {
+          "lo": 0.31,
+          "hi": 0.6,
+          "coverage": 0.6545284780578898,
+          "precision_FAKE": 0.9370229007633588,
+          "precision_TRUE": 0.9943502824858758
+        },
+        {
+          "lo": 0.31,
+          "hi": 0.85,
+          "coverage": 0.2838468720821662,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9943502824858758
+        },
+        {
+          "lo": 0.32,
+          "hi": 0.7,
+          "coverage": 0.5676937441643324,
+          "precision_FAKE": 0.9903147699757869,
+          "precision_TRUE": 0.9948717948717949
+        },
+        {
+          "lo": 0.33,
+          "hi": 0.55,
+          "coverage": 0.7404295051353875,
+          "precision_FAKE": 0.8910034602076125,
+          "precision_TRUE": 0.9953488372093023
+        },
+        {
+          "lo": 0.33,
+          "hi": 0.8,
+          "coverage": 0.41363211951447243,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9953488372093023
+        },
+        {
+          "lo": 0.34,
+          "hi": 0.65,
+          "coverage": 0.6479925303454716,
+          "precision_FAKE": 0.978401727861771,
+          "precision_TRUE": 0.9913419913419913
+        },
+        {
+          "lo": 0.35,
+          "hi": 0.5,
+          "coverage": 0.8151260504201681,
+          "precision_FAKE": 0.8325434439178515,
+          "precision_TRUE": 0.9916666666666667
+        },
+        {
+          "lo": 0.35,
+          "hi": 0.75,
+          "coverage": 0.5378151260504201,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9916666666666667
+        },
+        {
+          "lo": 0.36,
+          "hi": 0.6,
+          "coverage": 0.7217553688141923,
+          "precision_FAKE": 0.9370229007633588,
+          "precision_TRUE": 0.9919678714859438
+        },
+        {
+          "lo": 0.36,
+          "hi": 0.85,
+          "coverage": 0.3510737628384687,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9919678714859438
+        },
+        {
+          "lo": 0.37,
+          "hi": 0.7,
+          "coverage": 0.6330532212885154,
+          "precision_FAKE": 0.9903147699757869,
+          "precision_TRUE": 0.9886792452830189
+        },
+        {
+          "lo": 0.38,
+          "hi": 0.55,
+          "coverage": 0.7955182072829131,
+          "precision_FAKE": 0.8910034602076125,
+          "precision_TRUE": 0.9890510948905109
+        },
+        {
+          "lo": 0.38,
+          "hi": 0.8,
+          "coverage": 0.46872082166199813,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9890510948905109
+        },
+        {
+          "lo": 0.39,
+          "hi": 0.65,
+          "coverage": 0.7068160597572363,
+          "precision_FAKE": 0.978401727861771,
+          "precision_TRUE": 0.9897959183673469
+        },
+        {
+          "lo": 0.4,
+          "hi": 0.5,
+          "coverage": 0.8748832866479925,
+          "precision_FAKE": 0.8325434439178515,
+          "precision_TRUE": 0.9901315789473685
+        },
+        {
+          "lo": 0.4,
+          "hi": 0.75,
+          "coverage": 0.5975723622782446,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9901315789473685
+        },
+        {
+          "lo": 0.41,
+          "hi": 0.6,
+          "coverage": 0.7843137254901961,
+          "precision_FAKE": 0.9370229007633588,
+          "precision_TRUE": 0.9873417721518988
+        },
+        {
+          "lo": 0.41,
+          "hi": 0.85,
+          "coverage": 0.41363211951447243,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9873417721518988
+        },
+        {
+          "lo": 0.42,
+          "hi": 0.7,
+          "coverage": 0.6909430438842203,
+          "precision_FAKE": 0.9903147699757869,
+          "precision_TRUE": 0.9877675840978594
+        },
+        {
+          "lo": 0.43,
+          "hi": 0.55,
+          "coverage": 0.8571428571428571,
+          "precision_FAKE": 0.8910034602076125,
+          "precision_TRUE": 0.9882352941176471
+        },
+        {
+          "lo": 0.43,
+          "hi": 0.8,
+          "coverage": 0.5303454715219421,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9882352941176471
+        },
+        {
+          "lo": 0.44,
+          "hi": 0.65,
+          "coverage": 0.7637721755368814,
+          "precision_FAKE": 0.978401727861771,
+          "precision_TRUE": 0.9887323943661972
+        },
+        {
+          "lo": 0.45,
+          "hi": 0.5,
+          "coverage": 0.9365079365079365,
+          "precision_FAKE": 0.8325434439178515,
+          "precision_TRUE": 0.981081081081081
+        },
+        {
+          "lo": 0.45,
+          "hi": 0.75,
+          "coverage": 0.6591970121381886,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.981081081081081
+        },
+        {
+          "lo": 0.46,
+          "hi": 0.6,
+          "coverage": 0.8468720821661998,
+          "precision_FAKE": 0.9370229007633588,
+          "precision_TRUE": 0.97911227154047
+        },
+        {
+          "lo": 0.46,
+          "hi": 0.85,
+          "coverage": 0.47619047619047616,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.97911227154047
+        },
+        {
+          "lo": 0.47,
+          "hi": 0.7,
+          "coverage": 0.7544351073762838,
+          "precision_FAKE": 0.9903147699757869,
+          "precision_TRUE": 0.979746835443038
+        },
+        {
+          "lo": 0.48,
+          "hi": 0.55,
+          "coverage": 0.9215686274509803,
+          "precision_FAKE": 0.8910034602076125,
+          "precision_TRUE": 0.9779951100244498
+        },
+        {
+          "lo": 0.48,
+          "hi": 0.8,
+          "coverage": 0.5947712418300654,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9779951100244498
+        },
+        {
+          "lo": 0.49,
+          "hi": 0.65,
+          "coverage": 0.8281979458450047,
+          "precision_FAKE": 0.978401727861771,
+          "precision_TRUE": 0.9740566037735849
+        }
+      ]
+    }
+  },
+  "warning_thresholds": {
+    "n_words_p1": 41.94,
+    "vocab_coverage_p5": 0.6666666666666666,
+    "vocab_coverage_p1": 0.6243555936449338,
+    "n_words_p5": 83.0,
+    "n_words_p99": 2835.120000000001
+  },
+  "confidence_levels": {
+    "edges": [
+      0.6845557718984069,
+      0.7864322654946355
+    ],
+    "levels": [
+      {
+        "name": "baixa",
+        "n_val": 308,
+        "val_accuracy": 0.9123376623376623,
+        "n_source_shift": 3006,
+        "source_shift_accuracy": 0.5116433799068529
+      },
+      {
+        "name": "moderada",
+        "n_val": 309,
+        "val_accuracy": 0.9805825242718447,
+        "n_source_shift": 1086,
+        "source_shift_accuracy": 0.4953959484346225
+      },
+      {
+        "name": "alta",
+        "n_val": 308,
+        "val_accuracy": 1.0,
+        "n_source_shift": 235,
+        "source_shift_accuracy": 0.4085106382978723
+      }
+    ],
+    "method": "tercis da confiança calibrada das análises decididas (validação aleatória)"
+  },
+  "training_set_size": 4995,
+  "probabilities_calibrated": true,
+  "library_versions": {
+    "python": "3.12.3",
+    "scikit-learn": "1.9.1",
+    "pandas": "3.0.6",
+    "numpy": "2.5.4",
+    "joblib": "1.6.0"
+  },
+  "disclaimer": "Classificação de padrões linguísticos aprendidos em corpus rotulado; não é verificação factual."
+}

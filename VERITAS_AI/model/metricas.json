@@ -1,0 +1,3694 @@
+{
+  "generated_at": "2026-11-26T02:16:52+00:00",
+  "version": "2.0.0",
+  "dataset": {
+    "name": "Fake.br Corpus",
+    "n_raw": 7200,
+    "n_removed_duplicates": 63,
+    "n_clean": 7137,
+    "class_counts_clean": {
+      "FAKE": 3592,
+      "TRUE": 3545
+    },
+    "class_counts_raw": {
+      "FAKE": 3600,
+      "TRUE": 3600
+    },
+    "words_by_class": {
+      "FAKE": {
+        "count": 3592.0,
+        "mean": 185.5,
+        "std": 127.2,
+        "min": 9.0,
+        "25%": 115.0,
+        "50%": 157.0,
+        "75%": 224.0,
+        "max": 2286.0
+      },
+      "TRUE": {
+        "count": 3545.0,
+        "mean": 1099.5,
+        "std": 685.6,
+        "min": 20.0,
+        "25%": 639.0,
+        "50%": 914.0,
+        "75%": 1416.0,
+        "max": 7517.0
+      }
+    },
+    "artifacts_pct": {
+      "% FAKE": {
+        "BOM (\\ufeff) no início": 0.0,
+        "aspas curvas (“ ”)": 0.0,
+        "contém URL": 0.2,
+        "menciona \"g1\"": 1.0
+      },
+      "% TRUE": {
+        "BOM (\\ufeff) no início": 0.3,
+        "aspas curvas (“ ”)": 57.8,
+        "contém URL": 2.9,
+        "menciona \"g1\"": 21.8
+      }
+    },
+    "top_domains": {
+      "FAKE": {
+        "www.diariodobrasil.org": 0.927,
+        "afolhabrasil.com.br": 0.048,
+        "www.thejornalbrasil.com.br": 0.018
+      },
+      "TRUE": {
+        "g1.globo.com": 0.639,
+        "politica.estadao.com.br": 0.209,
+        "internacional.estadao.com.br": 0.032
+      }
+    },
+    "split": {
+      "treino": {
+        "n": 4995,
+        "FAKE": 2514,
+        "TRUE": 2481
+      },
+      "validação": {
+        "n": 1071,
+        "FAKE": 539,
+        "TRUE": 532
+      },
+      "teste": {
+        "n": 1071,
+        "FAKE": 539,
+        "TRUE": 532
+      }
+    },
+    "sources_by_class": {
+      "FAKE": {
+        "diariodobrasil": 3329,
+        "afolhabrasil": 174,
+        "thejornalbrasil": 66,
+        "outros_fake": 23
+      },
+      "TRUE": {
+        "g1": 2262,
+        "estadao": 1186,
+        "folha": 95,
+        "outros_true": 2
+      }
+    },
+    "years_by_class": {
+      "FAKE": {
+        "2012.0": 1,
+        "2015.0": 233,
+        "2016.0": 1585,
+        "2017.0": 1603,
+        "2018.0": 169
+      },
+      "TRUE": {
+        "2009.0": 3,
+        "2010.0": 6,
+        "2011.0": 5,
+        "2012.0": 9,
+        "2013.0": 5,
+        "2014.0": 10,
+        "2015.0": 40,
+        "2016.0": 271,
+        "2017.0": 2072,
+        "2018.0": 1121
+      }
+    }
+  },
+  "selected_vectorization": {
+    "name": "uni+bigramas, min_df=3",
+    "ngram": [
+      1,
+      2
+    ],
+    "min_df": 3,
+    "max_df": 0.9,
+    "max_features": 50000
+  },
+  "model_comparison": [
+    {
+      "key": "logreg",
+      "model": "Regressão Logística",
+      "config": "LR C=1 + máscara + sem nomes próprios",
+      "val": {
+        "accuracy": 0.9243697478991597,
+        "f1_macro": 0.9243655278179075,
+        "precision_macro": 0.9246357648240926,
+        "recall_macro": 0.9244580607362562,
+        "per_class": {
+          "FAKE": {
+            "precision": 0.9370229007633588,
+            "recall": 0.9109461966604824,
+            "f1": 0.9238005644402634,
+            "support": 539
+          },
+          "TRUE": {
+            "precision": 0.9122486288848263,
+            "recall": 0.9379699248120301,
+            "f1": 0.9249304911955515,
+            "support": 532
+          }
+        }
+      },
+      "test": {
+        "accuracy": 0.9337068160597572,
+        "f1_macro": 0.9336547597546898,
+        "precision_macro": 0.9356160594878833,
+        "recall_macro": 0.9339297920124988,
+        "per_class": {
+          "FAKE": {
+            "precision": 0.9661354581673307,
+            "recall": 0.8998144712430427,
+            "f1": 0.9317963496637848,
+            "support": 539
+          },
+          "TRUE": {
+            "precision": 0.9050966608084359,
+            "recall": 0.9680451127819549,
+            "f1": 0.935513169845595,
+            "support": 532
+          }
+        }
+      },
+      "loso_balanced": 0.660502395047797,
+      "loso_recall_FAKE": 0.4471646344432186,
+      "loso_recall_TRUE": 0.8738401556523753
+    },
+    {
+      "key": "nb",
+      "model": "Multinomial Naive Bayes",
+      "config": "Naive Bayes + máscara + pesos",
+      "val": {
+        "accuracy": 0.8842203548085901,
+        "f1_macro": 0.8841839048383158,
+        "precision_macro": 0.8850374143243414,
+        "recall_macro": 0.8843740845620545,
+        "per_class": {
+          "FAKE": {
+            "precision": 0.9044834307992202,
+            "recall": 0.8608534322820037,
+            "f1": 0.8821292775665399,
+            "support": 539
+          },
+          "TRUE": {
+            "precision": 0.8655913978494624,
+            "recall": 0.9078947368421053,
+            "f1": 0.8862385321100917,
+            "support": 532
+          }
+        }
+      },
+      "test": {
+        "accuracy": 0.8972922502334267,
+        "f1_macro": 0.8972527472527473,
+        "precision_macro": 0.8982754403131115,
+        "recall_macro": 0.8974587442632556,
+        "per_class": {
+          "FAKE": {
+            "precision": 0.9197651663405088,
+            "recall": 0.8719851576994434,
+            "f1": 0.8952380952380953,
+            "support": 539
+          },
+          "TRUE": {
+            "precision": 0.8767857142857143,
+            "recall": 0.9229323308270677,
+            "f1": 0.8992673992673993,
+            "support": 532
+          }
+        }
+      },
+      "loso_balanced": 0.49758005041529696,
+      "loso_recall_FAKE": 0.3646800054845935,
+      "loso_recall_TRUE": 0.6304800953460005
+    },
+    {
+      "key": "svm",
+      "model": "Linear SVM",
+      "config": "Linear SVM C=0,1 + máscara + pesos",
+      "val": {
+        "accuracy": 0.9281045751633987,
+        "f1_macro": 0.9281023186472597,
+        "precision_macro": 0.928297345379705,
+        "recall_macro": 0.9281808417146763,
+        "per_class": {
+          "FAKE": {
+            "precision": 0.9391634980988594,
+            "recall": 0.9165120593692022,
+            "f1": 0.927699530516432,
+            "support": 539
+          },
+          "TRUE": {
+            "precision": 0.9174311926605505,
+            "recall": 0.9398496240601504,
+            "f1": 0.9285051067780873,
+            "support": 532
+          }
+        }
+      },
+      "test": {
+        "accuracy": 0.934640522875817,
+        "f1_macro": 0.9346199462796945,
+        "precision_macro": 0.9355467521851223,
+        "recall_macro": 0.9347964066009179,
+        "per_class": {
+          "FAKE": {
+            "precision": 0.9571150097465887,
+            "recall": 0.9109461966604824,
+            "f1": 0.9334600760456274,
+            "support": 539
+          },
+          "TRUE": {
+            "precision": 0.9139784946236559,
+            "recall": 0.9586466165413534,
+            "f1": 0.9357798165137615,
+            "support": 532
+          }
+        }
+      },
+      "loso_balanced": 0.6375901449810938,
+      "loso_recall_FAKE": 0.4366450762848218,
+      "loso_recall_TRUE": 0.8385352136773657
+    }
+  ],
+  "selected_model": {
+    "key": "logreg",
+    "name": "Regressão Logística",
+    "C": 1,
+    "config": "LR C=1 + máscara + sem nomes próprios"
+  },
+  "test": {
+    "accuracy": 0.9337068160597572,
+    "f1_macro": 0.9336547597546898,
+    "precision_macro": 0.9356160594878833,
+    "recall_macro": 0.9339297920124988,
+    "per_class": {
+      "FAKE": {
+        "precision": 0.9661354581673307,
+        "recall": 0.8998144712430427,
+        "f1": 0.9317963496637848,
+        "support": 539
+      },
+      "TRUE": {
+        "precision": 0.9050966608084359,
+        "recall": 0.9680451127819549,
+        "f1": 0.935513169845595,
+        "support": 532
+      }
+    },
+    "n": 1071,
+    "labels": [
+      "FAKE",
+      "TRUE"
+    ],
+    "confusion_matrix": [
+      [
+        485,
+        54
+      ],
+      [
+        17,
+        515
+      ]
+    ],
+    "roc_auc": 0.9840731234393961,
+    "brier": 0.09135441939253475,
+    "ece": 0.19462935128896372
+  },
+  "errors": {
+    "false_negatives_fake_as_true": 54,
+    "false_positives_true_as_fake": 17
+  },
+  "top_terms": {
+    "FAKE": [
+      {
+        "term": "!",
+        "weight": -4.888192878015821
+      },
+      {
+        "term": "hoje 00",
+        "weight": -2.642168114734498
+      },
+      {
+        "term": "através",
+        "weight": -1.8531839370787775
+      },
+      {
+        "term": "hoje",
+        "weight": -1.8513186775130641
+      },
+      {
+        "term": "dilma",
+        "weight": -1.8322344080167925
+      },
+      {
+        "term": "poderá",
+        "weight": -1.8279059445149894
+      },
+      {
+        "term": "disse",
+        "weight": -1.7451555043906026
+      },
+      {
+        "term": "00 00",
+        "weight": -1.7278286119350867
+      },
+      {
+        "term": "está",
+        "weight": -1.7089930140305665
+      },
+      {
+        "term": "lula",
+        "weight": -1.6860028992225478
+      },
+      {
+        "term": "jornal",
+        "weight": -1.6650652934499486
+      },
+      {
+        "term": "acordo com",
+        "weight": -1.6466068730780201
+      },
+      {
+        "term": "vídeo",
+        "weight": -1.6342061118896782
+      },
+      {
+        "term": "?",
+        "weight": -1.6092734513755584
+      },
+      {
+        "term": "de acordo",
+        "weight": -1.5921631928489228
+      },
+      {
+        "term": "informou",
+        "weight": -1.5712265561463963
+      },
+      {
+        "term": "jornalista",
+        "weight": -1.5235514401812165
+      },
+      {
+        "term": "ontem 00",
+        "weight": -1.5156520867298706
+      },
+      {
+        "term": "petista",
+        "weight": -1.49868707308649
+      },
+      {
+        "term": "de hoje",
+        "weight": -1.3252299083403223
+      }
+    ],
+    "TRUE": [
+      {
+        "term": "feira",
+        "weight": 4.924338808339438
+      },
+      {
+        "term": "nesta",
+        "weight": 4.727968714482724
+      },
+      {
+        "term": "feira 00",
+        "weight": 3.766558195340455
+      },
+      {
+        "term": "mas",
+        "weight": 3.725292360591733
+      },
+      {
+        "term": "segundo",
+        "weight": 3.2231867012480664
+      },
+      {
+        "term": "à",
+        "weight": 2.6459321023477247
+      },
+      {
+        "term": "na",
+        "weight": 2.513850713641755
+      },
+      {
+        "term": "no",
+        "weight": 2.483322740460338
+      },
+      {
+        "term": "quarta",
+        "weight": 2.467756385022418
+      },
+      {
+        "term": "terça",
+        "weight": 2.443919664428645
+      },
+      {
+        "term": "diz",
+        "weight": 2.3875196575485838
+      },
+      {
+        "term": "feira 0",
+        "weight": 2.3394593993545825
+      },
+      {
+        "term": "como",
+        "weight": 2.267849324743549
+      },
+      {
+        "term": "por",
+        "weight": 2.1959892383926225
+      },
+      {
+        "term": "quinta",
+        "weight": 2.1763989422123755
+      },
+      {
+        "term": "em",
+        "weight": 2.162690397535145
+      },
+      {
+        "term": "desta",
+        "weight": 2.036940501908987
+      },
+      {
+        "term": "sobre",
+        "weight": 2.0300268487771422
+      },
+      {
+        "term": "ano",
+        "weight": 2.0286726762836254
+      },
+      {
+        "term": "segunda",
+        "weight": 2.0269287668510003
+      }
+    ]
+  },
+  "generalization": {
+    "protocol": "leave-one-source-out (cada fonte inteira fora do treino; recall na classe da fonte)",
+    "configs": {
+      "v1 (LR C=100)": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.3505747126436782
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.11835386001802344
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.7807757166947723
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.8244916003536693
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.7415730337078652
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.9175257731958762
+          }
+        },
+        "recall_FAKE_mean": 0.40350053545652226,
+        "recall_TRUE_mean": 0.8409310300814393,
+        "balanced": 0.6222157827689808,
+        "balanced_sem_diariodobrasil": 0.7229881673191723,
+        "seconds": 59.8,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.3381294964028777
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.10625
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.7315789473684211
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.8105263157894737
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.5217391304347826
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.9285714285714286
+            }
+          },
+          "recall_FAKE_mean": 0.3220395422792201,
+          "recall_TRUE_mean": 0.8235588972431079,
+          "balanced": 0.572799219761164
+        }
+      },
+      "LR C=10": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.3505747126436782
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.11745268849504356
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.7883642495784149
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.8103448275862069
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.7415730337078652
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.9278350515463918
+          }
+        },
+        "recall_FAKE_mean": 0.4032001449488623,
+        "recall_TRUE_mean": 0.8421813762370046,
+        "balanced": 0.6226907605929335,
+        "balanced_sem_diariodobrasil": 0.7237383750125114,
+        "seconds": 77.6,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.3381294964028777
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.109375
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.7447368421052631
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.7957894736842105
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.5652173913043478
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.9285714285714286
+            }
+          },
+          "recall_FAKE_mean": 0.3375739625690752,
+          "recall_TRUE_mean": 0.8230325814536341,
+          "balanced": 0.5803032720113547
+        }
+      },
+      "LR C=1": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.367816091954023
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.1679182937819165
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.7875210792580101
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.8408488063660478
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.7415730337078652
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.9278350515463918
+          }
+        },
+        "recall_FAKE_mean": 0.4257691398146015,
+        "recall_TRUE_mean": 0.8520683123901499,
+        "balanced": 0.6389187261023757,
+        "balanced_sem_diariodobrasil": 0.7331188125664676,
+        "seconds": 60.9,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.35251798561151076
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.153125
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.7789473684210526
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.8326315789473684
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.6086956521739131
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.9285714285714286
+            }
+          },
+          "recall_FAKE_mean": 0.37144621259514127,
+          "recall_TRUE_mean": 0.8467167919799499,
+          "balanced": 0.6090815022875455
+        }
+      },
+      "LR C=1 + pesos de fonte": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.3850574712643678
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.15229798738359868
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.7588532883642496
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.8143236074270557
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.7752808988764045
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.8556701030927836
+          }
+        },
+        "recall_FAKE_mean": 0.43754545250812366,
+        "recall_TRUE_mean": 0.8096156662946963,
+        "balanced": 0.62358055940141,
+        "balanced_sem_diariodobrasil": 0.7178370738049722,
+        "seconds": 60.8,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.3669064748201439
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.1375
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.7394736842105263
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.8126315789473684
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.5652173913043478
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.8571428571428572
+            }
+          },
+          "recall_FAKE_mean": 0.3565412887081639,
+          "recall_TRUE_mean": 0.8030827067669173,
+          "balanced": 0.5798119977375406
+        }
+      },
+      "LR C=1 + máscara": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.3620689655172414
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.17753079002703515
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.7934232715008431
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.8488063660477454
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.7528089887640449
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.9484536082474226
+          }
+        },
+        "recall_FAKE_mean": 0.4308029147694405,
+        "recall_TRUE_mean": 0.8635610819320038,
+        "balanced": 0.6471819983507221,
+        "balanced_sem_diariodobrasil": 0.7411122400154595,
+        "seconds": 70.7,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.35251798561151076
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.15520833333333334
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.781578947368421
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.84
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.6086956521739131
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.9642857142857143
+            }
+          },
+          "recall_FAKE_mean": 0.37214065703958576,
+          "recall_TRUE_mean": 0.8619548872180451,
+          "balanced": 0.6170477721288155
+        }
+      },
+      "LR C=1 + máscara + pesos": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.3735632183908046
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.16040853109041756
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.7715008431703204
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.8244916003536693
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.797752808988764
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.9072164948453608
+          }
+        },
+        "recall_FAKE_mean": 0.44390818615666205,
+        "recall_TRUE_mean": 0.8344029794564501,
+        "balanced": 0.639155582806556,
+        "balanced_sem_diariodobrasil": 0.7349049931497837,
+        "seconds": 70.3,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.3597122302158273
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.13958333333333334
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.7578947368421053
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.8178947368421052
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.6086956521739131
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.9107142857142857
+            }
+          },
+          "recall_FAKE_mean": 0.3693304052410246,
+          "recall_TRUE_mean": 0.8288345864661654,
+          "balanced": 0.599082495853595
+        }
+      },
+      "LR C=0,3 + máscara + pesos": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.3850574712643678
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.19765695404025233
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.7529510961214165
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.786472148541114
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.8089887640449438
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.865979381443299
+          }
+        },
+        "recall_FAKE_mean": 0.4639010631165213,
+        "recall_TRUE_mean": 0.8018008753686098,
+        "balanced": 0.6328509692425656,
+        "balanced_sem_diariodobrasil": 0.7198897722830282,
+        "seconds": 71.6,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.381294964028777
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.171875
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.7605263157894737
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.8052631578947369
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.6521739130434783
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.8571428571428572
+            }
+          },
+          "recall_FAKE_mean": 0.40178129235741844,
+          "recall_TRUE_mean": 0.8076441102756893,
+          "balanced": 0.6047127013165539
+        }
+      },
+      "LR unigramas C=1 + máscara + pesos": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.39080459770114945
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.2661459897867227
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.7487352445193929
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.8191865605658709
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.7865168539325843
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.8969072164948454
+          }
+        },
+        "recall_FAKE_mean": 0.4811558138068188,
+        "recall_TRUE_mean": 0.8216096738600364,
+        "balanced": 0.6513827438334276,
+        "balanced_sem_diariodobrasil": 0.7284300946427685,
+        "seconds": 55.7,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.3669064748201439
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.215625
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.7263157894736842
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.8231578947368421
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.6521739130434783
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.9107142857142857
+            }
+          },
+          "recall_FAKE_mean": 0.41156846262120733,
+          "recall_TRUE_mean": 0.8200626566416039,
+          "balanced": 0.6158155596314057
+        }
+      },
+      "LR C=1 + máscara + pesos + 100 palavras": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.4885057471264368
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.1727245419044758
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.6121416526138279
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.7975243147656941
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.7303370786516854
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.8762886597938144
+          }
+        },
+        "recall_FAKE_mean": 0.4638557892275326,
+        "recall_TRUE_mean": 0.7619848757244455,
+        "balanced": 0.6129203324759891,
+        "balanced_sem_diariodobrasil": 0.7009594905902918,
+        "seconds": 60.3,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.48201438848920863
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.14375
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.6789473684210526
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.8157894736842105
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.6086956521739131
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.8392857142857143
+            }
+          },
+          "recall_FAKE_mean": 0.41148668022104057,
+          "recall_TRUE_mean": 0.7780075187969925,
+          "balanced": 0.5947470995090165
+        }
+      },
+      "LR C=1 + máscara + pesos + sem truncar": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.5459770114942529
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.7861219585461099
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.9443507588532883
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.9266136162687887
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.9550561797752809
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.865979381443299
+          }
+        },
+        "recall_FAKE_mean": 0.7623850499385479,
+        "recall_TRUE_mean": 0.9123145855217919,
+        "balanced": 0.8373498177301699,
+        "balanced_sem_diariodobrasil": 0.847595389566982,
+        "seconds": 112.2,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.45323741007194246
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.49895833333333334
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.8631578947368421
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.8494736842105264
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.8695652173913043
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.8571428571428572
+            }
+          },
+          "recall_FAKE_mean": 0.6072536535988601,
+          "recall_TRUE_mean": 0.856591478696742,
+          "balanced": 0.731922566147801
+        }
+      },
+      "LR C=1 + máscara + pesos + stopwords": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.3563218390804598
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.20156203063983177
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.7369308600337268
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.8152077807250221
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.7640449438202247
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.865979381443299
+          }
+        },
+        "recall_FAKE_mean": 0.4406429378468388,
+        "recall_TRUE_mean": 0.806039340734016,
+        "balanced": 0.6233411392904273,
+        "balanced_sem_diariodobrasil": 0.7076969610205465,
+        "seconds": 69.1,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.34532374100719426
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.16770833333333332
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.736842105263158
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.8315789473684211
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.6086956521739131
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.875
+            }
+          },
+          "recall_FAKE_mean": 0.3739092421714802,
+          "recall_TRUE_mean": 0.8144736842105263,
+          "balanced": 0.5941914631910032
+        }
+      },
+      "Naive Bayes + máscara + pesos": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.40804597701149425
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.0006007810153199159
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.6197301854974705
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.47789566755084
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.6853932584269663
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.7938144329896908
+          }
+        },
+        "recall_FAKE_mean": 0.3646800054845935,
+        "recall_TRUE_mean": 0.6304800953460005,
+        "balanced": 0.49758005041529696,
+        "balanced_sem_diariodobrasil": 0.5969759042952925,
+        "seconds": 70.2,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.4028776978417266
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.0010416666666666667
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.6342105263157894
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.488421052631579
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.6086956521739131
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.75
+            }
+          },
+          "recall_FAKE_mean": 0.3375383388941022,
+          "recall_TRUE_mean": 0.6242105263157894,
+          "balanced": 0.4808744326049458
+        }
+      },
+      "Linear SVM C=0,1 + máscara + pesos": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.367816091954023
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.15560228296785822
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.7740303541315345
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.8240495137046862
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.7865168539325843
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.9175257731958762
+          }
+        },
+        "recall_FAKE_mean": 0.4366450762848218,
+        "recall_TRUE_mean": 0.8385352136773657,
+        "balanced": 0.6375901449810938,
+        "balanced_sem_diariodobrasil": 0.7339877173837408,
+        "seconds": 71.1,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.35251798561151076
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.1375
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.7552631578947369
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.8178947368421052
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.5652173913043478
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.9285714285714286
+            }
+          },
+          "recall_FAKE_mean": 0.35174512563861954,
+          "recall_TRUE_mean": 0.8339097744360903,
+          "balanced": 0.5928274500373549
+        }
+      },
+      "LR C=1 + máscara + fonte+comprimento + sem truncar": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.4942528735632184
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.6593571643136077
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.9300168634064081
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.9248452696728559
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.9325842696629213
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.8865979381443299
+          }
+        },
+        "recall_FAKE_mean": 0.6953981025132491,
+        "recall_TRUE_mean": 0.9138200237411979,
+        "balanced": 0.8046090631272235,
+        "balanced_sem_diariodobrasil": 0.8336594428899466,
+        "seconds": 123.7,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.4244604316546763
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.36041666666666666
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.8394736842105264
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.8547368421052631
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.782608695652174
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.875
+            }
+          },
+          "recall_FAKE_mean": 0.5224952646578389,
+          "recall_TRUE_mean": 0.8564035087719298,
+          "balanced": 0.6894493867148843
+        }
+      },
+      "LR C=1 + máscara + fonte+comprimento + 200 palavras": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.3793103448275862
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.12195854610994293
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.6939291736930859
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.7307692307692308
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.8202247191011236
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.8762886597938144
+          }
+        },
+        "recall_FAKE_mean": 0.44049787001288426,
+        "recall_TRUE_mean": 0.7669956880853771,
+        "balanced": 0.6037467790491307,
+        "balanced_sem_diariodobrasil": 0.7001044256369682,
+        "seconds": 68.8,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.3597122302158273
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.11666666666666667
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.6868421052631579
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.7894736842105263
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.6521739130434783
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.9107142857142857
+            }
+          },
+          "recall_FAKE_mean": 0.3761842699753241,
+          "recall_TRUE_mean": 0.7956766917293233,
+          "balanced": 0.5859304808523237
+        }
+      },
+      "LR C=1 + máscara + fonte+comprimento + 400 palavras": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.3160919540229885
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.1871432862721538
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.8086003372681282
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.8443854995579133
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.8651685393258427
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.9175257731958762
+          }
+        },
+        "recall_FAKE_mean": 0.45613459320699495,
+        "recall_TRUE_mean": 0.8568372033406392,
+        "balanced": 0.6564858982738171,
+        "balanced_sem_diariodobrasil": 0.7503544206741497,
+        "seconds": 78.8,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.2517985611510791
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.11041666666666666
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.8315789473684211
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.8663157894736842
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.6086956521739131
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.9464285714285714
+            }
+          },
+          "recall_FAKE_mean": 0.3236369599972196,
+          "recall_TRUE_mean": 0.8814411027568921,
+          "balanced": 0.6025390313770559
+        }
+      },
+      "LR C=1 + máscara + comprimento + sem truncar": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.4827586206896552
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.6191048362871733
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.9300168634064081
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.9389920424403183
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.9325842696629213
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.9175257731958762
+          }
+        },
+        "recall_FAKE_mean": 0.6781492422132499,
+        "recall_TRUE_mean": 0.9288448930142009,
+        "balanced": 0.8034970676137254,
+        "balanced_sem_diariodobrasil": 0.8403755138790359,
+        "seconds": 117.2,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.4244604316546763
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.32083333333333336
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.8368421052631578
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.88
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.782608695652174
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.9107142857142857
+            }
+          },
+          "recall_FAKE_mean": 0.5093008202133945,
+          "recall_TRUE_mean": 0.8758521303258145,
+          "balanced": 0.6925764752696045
+        }
+      },
+      "LR unigramas C=1 + máscara + fonte+comprimento + sem truncar": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.4827586206896552
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.693000901171523
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.9139966273187183
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.9274977895667551
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.9325842696629213
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.9175257731958762
+          }
+        },
+        "recall_FAKE_mean": 0.7027812638413665,
+        "recall_TRUE_mean": 0.9196733966937832,
+        "balanced": 0.8112273302675749,
+        "balanced_sem_diariodobrasil": 0.8348726160867852,
+        "seconds": 62.5,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.4172661870503597
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.428125
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.8210526315789474
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.8673684210526316
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.782608695652174
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.8928571428571429
+            }
+          },
+          "recall_FAKE_mean": 0.5426666275675113,
+          "recall_TRUE_mean": 0.8604260651629073,
+          "balanced": 0.7015463463652093
+        }
+      },
+      "LR C=0,3 + máscara + fonte+comprimento + sem truncar": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.5
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.6942024632021628
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.9258010118043845
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.9199823165340406
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.9325842696629213
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.8350515463917526
+          }
+        },
+        "recall_FAKE_mean": 0.7089289109550281,
+        "recall_TRUE_mean": 0.8936116249100592,
+        "balanced": 0.8012702679325436,
+        "balanced_sem_diariodobrasil": 0.8226838288786198,
+        "seconds": 118.3,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.43884892086330934
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.4010416666666667
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.8473684210526315
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.8526315789473684
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.782608695652174
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.8214285714285714
+            }
+          },
+          "recall_FAKE_mean": 0.54083309439405,
+          "recall_TRUE_mean": 0.8404761904761905,
+          "balanced": 0.6906546424351203
+        }
+      },
+      "Baseline: só comprimento do texto": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.6954022988505747
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.9795734454791228
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.9477234401349073
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.9336870026525199
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.9887640449438202
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.7938144329896908
+          }
+        },
+        "recall_FAKE_mean": 0.8879132630911726,
+        "recall_TRUE_mean": 0.8917416252590393,
+        "balanced": 0.889827444175106,
+        "balanced_sem_diariodobrasil": 0.8718782439143025,
+        "seconds": 1.7,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.6402877697841727
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.9427083333333334
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.868421052631579
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.8663157894736842
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.9565217391304348
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.7321428571428572
+            }
+          },
+          "recall_FAKE_mean": 0.8465059474159803,
+          "recall_TRUE_mean": 0.8222932330827067,
+          "balanced": 0.8343995902493435
+        }
+      },
+      "LR C=1 + máscara + sem nomes próprios": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.3620689655172414
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.21537999399218985
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.8229342327150084
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.850132625994695
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.7640449438202247
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.9484536082474226
+          }
+        },
+        "recall_FAKE_mean": 0.4471646344432186,
+        "recall_TRUE_mean": 0.8738401556523753,
+        "balanced": 0.660502395047797,
+        "balanced_sem_diariodobrasil": 0.7495268752589185,
+        "seconds": 153.9,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.31654676258992803
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.18020833333333333
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.8157894736842105
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.848421052631579
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.6521739130434783
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.9464285714285714
+            }
+          },
+          "recall_FAKE_mean": 0.38297633632224654,
+          "recall_TRUE_mean": 0.8702130325814537,
+          "balanced": 0.6265946844518501
+        }
+      },
+      "LR C=1 + máscara + sem nomes próprios + pesos de fonte": {
+        "folds": {
+          "afolhabrasil": {
+            "class": "FAKE",
+            "n": 174,
+            "recall": 0.3620689655172414
+          },
+          "diariodobrasil": {
+            "class": "FAKE",
+            "n": 3329,
+            "recall": 0.20126164013217182
+          },
+          "estadao": {
+            "class": "TRUE",
+            "n": 1186,
+            "recall": 0.7925801011804384
+          },
+          "g1": {
+            "class": "TRUE",
+            "n": 2262,
+            "recall": 0.8297966401414677
+          },
+          "minor_fake": {
+            "class": "FAKE",
+            "n": 89,
+            "recall": 0.797752808988764
+          },
+          "minor_true": {
+            "class": "TRUE",
+            "n": 97,
+            "recall": 0.9278350515463918
+          }
+        },
+        "recall_FAKE_mean": 0.4536944715460591,
+        "recall_TRUE_mean": 0.850070597622766,
+        "balanced": 0.6518825345844126,
+        "balanced_sem_diariodobrasil": 0.7420067134748607,
+        "seconds": 133.9,
+        "length_matched": {
+          "folds": {
+            "afolhabrasil": {
+              "class": "FAKE",
+              "n": 139,
+              "recall": 0.3237410071942446
+            },
+            "diariodobrasil": {
+              "class": "FAKE",
+              "n": 960,
+              "recall": 0.16458333333333333
+            },
+            "estadao": {
+              "class": "TRUE",
+              "n": 380,
+              "recall": 0.7921052631578948
+            },
+            "g1": {
+              "class": "TRUE",
+              "n": 950,
+              "recall": 0.8389473684210527
+            },
+            "minor_fake": {
+              "class": "FAKE",
+              "n": 23,
+              "recall": 0.6521739130434783
+            },
+            "minor_true": {
+              "class": "TRUE",
+              "n": 56,
+              "recall": 0.9107142857142857
+            }
+          },
+          "recall_FAKE_mean": 0.3801660845236854,
+          "recall_TRUE_mean": 0.8472556390977443,
+          "balanced": 0.6137108618107148
+        }
+      }
+    },
+    "chosen": "LR C=1 + máscara + sem nomes próprios",
+    "v1": "v1 (LR C=100)",
+    "temporal_split_train_le_2016_test_ge_2017": {
+      "v1 (LR C=100)": {
+        "n_train": 2168,
+        "n_test": 4965,
+        "recall_FAKE": 0.958803611738149,
+        "recall_TRUE": 0.6786720952082681,
+        "balanced": 0.8187378534732086
+      },
+      "LR C=1 + máscara + sem nomes próprios": {
+        "n_train": 2168,
+        "n_test": 4965,
+        "recall_FAKE": 0.9193002257336343,
+        "recall_TRUE": 0.831506420294394,
+        "balanced": 0.8754033230140141
+      }
+    }
+  },
+  "calibration": {
+    "brier_raw": 0.24838719658021788,
+    "brier_cal_logo": 0.25698888025766276,
+    "ece_raw": 0.1428505029848949,
+    "ece_cal_logo": 0.12196793439229991,
+    "test": {
+      "brier_raw": 0.09135441939253475,
+      "ece_raw": 0.19462935128896372,
+      "brier_cal": 0.11383777725196374,
+      "ece_cal": 0.2409858146805681
+    },
+    "a": 0.8100416386298611,
+    "b": 0.40614726428855247
+  },
+  "abstention": {
+    "lo": 0.49,
+    "hi": 0.62,
+    "policy_met": true,
+    "target_precision": 0.95,
+    "validation": {
+      "target_precision": 0.95,
+      "chosen": {
+        "lo": 0.49,
+        "hi": 0.62,
+        "coverage": 0.8636788048552755,
+        "precision_FAKE": 0.9560878243512974,
+        "precision_TRUE": 0.9740566037735849
+      },
+      "curve_sample": [
+        {
+          "lo": 0.2,
+          "hi": 0.5,
+          "coverage": 0.6237161531279178,
+          "precision_FAKE": 0.8325434439178515,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.2,
+          "hi": 0.75,
+          "coverage": 0.3464052287581699,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.21,
+          "hi": 0.6,
+          "coverage": 0.5303454715219421,
+          "precision_FAKE": 0.9370229007633588,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.21,
+          "hi": 0.85,
+          "coverage": 0.15966386554621848,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.22,
+          "hi": 0.7,
+          "coverage": 0.4351073762838469,
+          "precision_FAKE": 0.9903147699757869,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.23,
+          "hi": 0.55,
+          "coverage": 0.5975723622782446,
+          "precision_FAKE": 0.8910034602076125,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.23,
+          "hi": 0.8,
+          "coverage": 0.2707749766573296,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.24,
+          "hi": 0.65,
+          "coverage": 0.4995331465919701,
+          "precision_FAKE": 0.978401727861771,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.25,
+          "hi": 0.5,
+          "coverage": 0.673202614379085,
+          "precision_FAKE": 0.8325434439178515,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.25,
+          "hi": 0.75,
+          "coverage": 0.39589169000933705,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.26,
+          "hi": 0.6,
+          "coverage": 0.5845004668534081,
+          "precision_FAKE": 0.9370229007633588,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.26,
+          "hi": 0.85,
+          "coverage": 0.2138188608776844,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.27,
+          "hi": 0.7,
+          "coverage": 0.4939309056956116,
+          "precision_FAKE": 0.9903147699757869,
+          "precision_TRUE": 1.0
+        },
+        {
+          "lo": 0.28,
+          "hi": 0.55,
+          "coverage": 0.6610644257703081,
+          "precision_FAKE": 0.8910034602076125,
+          "precision_TRUE": 0.9923076923076923
+        },
+        {
+          "lo": 0.28,
+          "hi": 0.8,
+          "coverage": 0.33426704014939307,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9923076923076923
+        },
+        {
+          "lo": 0.29,
+          "hi": 0.65,
+          "coverage": 0.5648926237161531,
+          "precision_FAKE": 0.978401727861771,
+          "precision_TRUE": 0.9929577464788732
+        },
+        {
+          "lo": 0.3,
+          "hi": 0.5,
+          "coverage": 0.7413632119514473,
+          "precision_FAKE": 0.8325434439178515,
+          "precision_TRUE": 0.9937888198757764
+        },
+        {
+          "lo": 0.3,
+          "hi": 0.75,
+          "coverage": 0.46405228758169936,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9937888198757764
+        },
+        {
+          "lo": 0.31,
+          "hi": 0.6,
+          "coverage": 0.6545284780578898,
+          "precision_FAKE": 0.9370229007633588,
+          "precision_TRUE": 0.9943502824858758
+        },
+        {
+          "lo": 0.31,
+          "hi": 0.85,
+          "coverage": 0.2838468720821662,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9943502824858758
+        },
+        {
+          "lo": 0.32,
+          "hi": 0.7,
+          "coverage": 0.5676937441643324,
+          "precision_FAKE": 0.9903147699757869,
+          "precision_TRUE": 0.9948717948717949
+        },
+        {
+          "lo": 0.33,
+          "hi": 0.55,
+          "coverage": 0.7404295051353875,
+          "precision_FAKE": 0.8910034602076125,
+          "precision_TRUE": 0.9953488372093023
+        },
+        {
+          "lo": 0.33,
+          "hi": 0.8,
+          "coverage": 0.41363211951447243,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9953488372093023
+        },
+        {
+          "lo": 0.34,
+          "hi": 0.65,
+          "coverage": 0.6479925303454716,
+          "precision_FAKE": 0.978401727861771,
+          "precision_TRUE": 0.9913419913419913
+        },
+        {
+          "lo": 0.35,
+          "hi": 0.5,
+          "coverage": 0.8151260504201681,
+          "precision_FAKE": 0.8325434439178515,
+          "precision_TRUE": 0.9916666666666667
+        },
+        {
+          "lo": 0.35,
+          "hi": 0.75,
+          "coverage": 0.5378151260504201,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9916666666666667
+        },
+        {
+          "lo": 0.36,
+          "hi": 0.6,
+          "coverage": 0.7217553688141923,
+          "precision_FAKE": 0.9370229007633588,
+          "precision_TRUE": 0.9919678714859438
+        },
+        {
+          "lo": 0.36,
+          "hi": 0.85,
+          "coverage": 0.3510737628384687,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9919678714859438
+        },
+        {
+          "lo": 0.37,
+          "hi": 0.7,
+          "coverage": 0.6330532212885154,
+          "precision_FAKE": 0.9903147699757869,
+          "precision_TRUE": 0.9886792452830189
+        },
+        {
+          "lo": 0.38,
+          "hi": 0.55,
+          "coverage": 0.7955182072829131,
+          "precision_FAKE": 0.8910034602076125,
+          "precision_TRUE": 0.9890510948905109
+        },
+        {
+          "lo": 0.38,
+          "hi": 0.8,
+          "coverage": 0.46872082166199813,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9890510948905109
+        },
+        {
+          "lo": 0.39,
+          "hi": 0.65,
+          "coverage": 0.7068160597572363,
+          "precision_FAKE": 0.978401727861771,
+          "precision_TRUE": 0.9897959183673469
+        },
+        {
+          "lo": 0.4,
+          "hi": 0.5,
+          "coverage": 0.8748832866479925,
+          "precision_FAKE": 0.8325434439178515,
+          "precision_TRUE": 0.9901315789473685
+        },
+        {
+          "lo": 0.4,
+          "hi": 0.75,
+          "coverage": 0.5975723622782446,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9901315789473685
+        },
+        {
+          "lo": 0.41,
+          "hi": 0.6,
+          "coverage": 0.7843137254901961,
+          "precision_FAKE": 0.9370229007633588,
+          "precision_TRUE": 0.9873417721518988
+        },
+        {
+          "lo": 0.41,
+          "hi": 0.85,
+          "coverage": 0.41363211951447243,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9873417721518988
+        },
+        {
+          "lo": 0.42,
+          "hi": 0.7,
+          "coverage": 0.6909430438842203,
+          "precision_FAKE": 0.9903147699757869,
+          "precision_TRUE": 0.9877675840978594
+        },
+        {
+          "lo": 0.43,
+          "hi": 0.55,
+          "coverage": 0.8571428571428571,
+          "precision_FAKE": 0.8910034602076125,
+          "precision_TRUE": 0.9882352941176471
+        },
+        {
+          "lo": 0.43,
+          "hi": 0.8,
+          "coverage": 0.5303454715219421,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9882352941176471
+        },
+        {
+          "lo": 0.44,
+          "hi": 0.65,
+          "coverage": 0.7637721755368814,
+          "precision_FAKE": 0.978401727861771,
+          "precision_TRUE": 0.9887323943661972
+        },
+        {
+          "lo": 0.45,
+          "hi": 0.5,
+          "coverage": 0.9365079365079365,
+          "precision_FAKE": 0.8325434439178515,
+          "precision_TRUE": 0.981081081081081
+        },
+        {
+          "lo": 0.45,
+          "hi": 0.75,
+          "coverage": 0.6591970121381886,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.981081081081081
+        },
+        {
+          "lo": 0.46,
+          "hi": 0.6,
+          "coverage": 0.8468720821661998,
+          "precision_FAKE": 0.9370229007633588,
+          "precision_TRUE": 0.97911227154047
+        },
+        {
+          "lo": 0.46,
+          "hi": 0.85,
+          "coverage": 0.47619047619047616,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.97911227154047
+        },
+        {
+          "lo": 0.47,
+          "hi": 0.7,
+          "coverage": 0.7544351073762838,
+          "precision_FAKE": 0.9903147699757869,
+          "precision_TRUE": 0.979746835443038
+        },
+        {
+          "lo": 0.48,
+          "hi": 0.55,
+          "coverage": 0.9215686274509803,
+          "precision_FAKE": 0.8910034602076125,
+          "precision_TRUE": 0.9779951100244498
+        },
+        {
+          "lo": 0.48,
+          "hi": 0.8,
+          "coverage": 0.5947712418300654,
+          "precision_FAKE": 1.0,
+          "precision_TRUE": 0.9779951100244498
+        },
+        {
+          "lo": 0.49,
+          "hi": 0.65,
+          "coverage": 0.8281979458450047,
+          "precision_FAKE": 0.978401727861771,
+          "precision_TRUE": 0.9740566037735849
+        }
+      ]
+    },
+    "target_selective_accuracy": 0.8,
+    "min_coverage": 0.2,
+    "oof_source_shift": {
+      "without": {
+        "coverage": 1.0,
+        "accuracy": 0.5502754089790557,
+        "precision_like_balanced": 0.5505598849034319,
+        "recall_FAKE_all": 0.5074191109717876,
+        "n_decided": 6066,
+        "FN": 1778,
+        "FP": 1275
+      },
+      "with": {
+        "lo": 0.49,
+        "hi": 0.62,
+        "coverage": 0.702956668216885,
+        "accuracy": 0.5644967850870863,
+        "precision_like_balanced": 0.5651490191923105,
+        "recall_FAKE_all": 0.22818177021100425,
+        "n_decided": 4327,
+        "FN": 1707,
+        "FP": 448
+      }
+    },
+    "test_random": {
+      "before": {
+        "coverage": 1.0,
+        "accuracy": 0.9337068160597572,
+        "precision_like_balanced": 0.9339297920124988,
+        "recall_FAKE_all": 0.8998144712430427,
+        "n_decided": 1071,
+        "FN": 54,
+        "FP": 17
+      },
+      "after": {
+        "coverage": 0.861811391223156,
+        "accuracy": 0.9729144095341279,
+        "precision_like_balanced": 0.972594666968394,
+        "recall_FAKE_all": 0.8905380333951762,
+        "n_decided": 923,
+        "FN": 11,
+        "FP": 14
+      },
+      "brier_cal": 0.11383777725196374,
+      "ece_cal": 0.2409858146805681
+    },
+    "grid": [
+      {
+        "lo": 0.05,
+        "hi": 0.5,
+        "coverage": 0.45719262458403936,
+        "accuracy": 0.5585885157699149,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.5074191109717876,
+        "n_decided": 2550,
+        "FN": 0,
+        "FP": 1275
+      },
+      {
+        "lo": 0.05,
+        "hi": 0.55,
+        "coverage": 0.34586273127158035,
+        "accuracy": 0.5917887284690936,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.4066736723674962,
+        "n_decided": 1844,
+        "FN": 0,
+        "FP": 888
+      },
+      {
+        "lo": 0.05,
+        "hi": 0.6,
+        "coverage": 0.226277886393777,
+        "accuracy": 0.6269802892946821,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.28188476421923336,
+        "n_decided": 1191,
+        "FN": 0,
+        "FP": 554
+      },
+      {
+        "lo": 0.05,
+        "hi": 0.65,
+        "coverage": 0.12675740051163592,
+        "accuracy": 0.6444002996498185,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.162294820402479,
+        "n_decided": 667,
+        "FN": 0,
+        "FP": 293
+      },
+      {
+        "lo": 0.05,
+        "hi": 0.7,
+        "coverage": 0.06510740043122852,
+        "accuracy": 0.6770634060036624,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.08758612220089884,
+        "n_decided": 345,
+        "FN": 0,
+        "FP": 139
+      },
+      {
+        "lo": 0.05,
+        "hi": 0.75,
+        "coverage": 0.028070486344782635,
+        "accuracy": 0.7227382912180124,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.040309425030788285,
+        "n_decided": 142,
+        "FN": 0,
+        "FP": 51
+      },
+      {
+        "lo": 0.05,
+        "hi": 0.8,
+        "coverage": 0.007114722024455445,
+        "accuracy": 0.6999704140795082,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.009894941301648308,
+        "n_decided": 38,
+        "FN": 0,
+        "FP": 14
+      },
+      {
+        "lo": 0.05,
+        "hi": 0.85,
+        "coverage": 0.0019756819850721627,
+        "accuracy": 0.909200443211094,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.00356904710797178,
+        "n_decided": 9,
+        "FN": 0,
+        "FP": 1
+      },
+      {
+        "lo": 0.05,
+        "hi": 0.9,
+        "coverage": 0.0,
+        "accuracy": null,
+        "recall_FAKE": null,
+        "recall_TRUE": null,
+        "balanced": null,
+        "n_decided": 0,
+        "FN": 0,
+        "FP": 0
+      },
+      {
+        "lo": 0.05,
+        "hi": 0.95,
+        "coverage": 0.0,
+        "accuracy": null,
+        "recall_FAKE": null,
+        "recall_TRUE": null,
+        "balanced": null,
+        "n_decided": 0,
+        "FN": 0,
+        "FP": 0
+      },
+      {
+        "lo": 0.1,
+        "hi": 0.5,
+        "coverage": 0.45731496647912423,
+        "accuracy": 0.5584390809545225,
+        "precision_like_balanced": 0.49976058795905043,
+        "recall_FAKE_all": 0.5074191109717876,
+        "n_decided": 2551,
+        "FN": 1,
+        "FP": 1275
+      },
+      {
+        "lo": 0.1,
+        "hi": 0.55,
+        "coverage": 0.3459850731666652,
+        "accuracy": 0.591579469283811,
+        "precision_like_balanced": 0.4997013137441651,
+        "recall_FAKE_all": 0.4066736723674962,
+        "n_decided": 1845,
+        "FN": 1,
+        "FP": 888
+      },
+      {
+        "lo": 0.1,
+        "hi": 0.6,
+        "coverage": 0.22640022828886175,
+        "accuracy": 0.6266414824067524,
+        "precision_like_balanced": 0.49956920083013845,
+        "recall_FAKE_all": 0.28188476421923336,
+        "n_decided": 1192,
+        "FN": 1,
+        "FP": 554
+      },
+      {
+        "lo": 0.1,
+        "hi": 0.65,
+        "coverage": 0.12687974240672073,
+        "accuracy": 0.6437789462930339,
+        "precision_like_balanced": 0.49925223322988865,
+        "recall_FAKE_all": 0.162294820402479,
+        "n_decided": 668,
+        "FN": 1,
+        "FP": 293
+      },
+      {
+        "lo": 0.1,
+        "hi": 0.7,
+        "coverage": 0.06522974232631332,
+        "accuracy": 0.6757935371182592,
+        "precision_like_balanced": 0.49861617278539055,
+        "recall_FAKE_all": 0.08758612220089884,
+        "n_decided": 346,
+        "FN": 1,
+        "FP": 139
+      },
+      {
+        "lo": 0.1,
+        "hi": 0.75,
+        "coverage": 0.028192828239867435,
+        "accuracy": 0.719601991041043,
+        "precision_like_balanced": 0.4970028870293872,
+        "recall_FAKE_all": 0.040309425030788285,
+        "n_decided": 143,
+        "FN": 1,
+        "FP": 51
+      },
+      {
+        "lo": 0.1,
+        "hi": 0.8,
+        "coverage": 0.007237063919540248,
+        "accuracy": 0.6881374790779861,
+        "precision_like_balanced": 0.4880114247875937,
+        "recall_FAKE_all": 0.009894941301648308,
+        "n_decided": 39,
+        "FN": 1,
+        "FP": 14
+      },
+      {
+        "lo": 0.1,
+        "hi": 0.85,
+        "coverage": 0.0020980238801569665,
+        "accuracy": 0.8561823120609059,
+        "precision_like_balanced": 0.46811742896488756,
+        "recall_FAKE_all": 0.00356904710797178,
+        "n_decided": 10,
+        "FN": 1,
+        "FP": 1
+      },
+      {
+        "lo": 0.1,
+        "hi": 0.9,
+        "coverage": 0.00012234189508480354,
+        "accuracy": 0.0,
+        "precision_like_balanced": 0.0,
+        "recall_FAKE_all": 0.0,
+        "n_decided": 1,
+        "FN": 1,
+        "FP": 0
+      },
+      {
+        "lo": 0.1,
+        "hi": 0.95,
+        "coverage": 0.00012234189508480354,
+        "accuracy": 0.0,
+        "precision_like_balanced": 0.0,
+        "recall_FAKE_all": 0.0,
+        "n_decided": 1,
+        "FN": 1,
+        "FP": 0
+      },
+      {
+        "lo": 0.15,
+        "hi": 0.5,
+        "coverage": 0.4599710250484167,
+        "accuracy": 0.5564672164149012,
+        "precision_like_balanced": 0.4971490084127556,
+        "recall_FAKE_all": 0.5074191109717876,
+        "n_decided": 2572,
+        "FN": 18,
+        "FP": 1275
+      },
+      {
+        "lo": 0.15,
+        "hi": 0.55,
+        "coverage": 0.34864113173595773,
+        "accuracy": 0.5887254647634507,
+        "precision_like_balanced": 0.4967101499624783,
+        "recall_FAKE_all": 0.4066736723674962,
+        "n_decided": 1866,
+        "FN": 18,
+        "FP": 888
+      },
+      {
+        "lo": 0.15,
+        "hi": 0.6,
+        "coverage": 0.2290562868581542,
+        "accuracy": 0.6218909027946607,
+        "precision_like_balanced": 0.49574794325565247,
+        "recall_FAKE_all": 0.28188476421923336,
+        "n_decided": 1213,
+        "FN": 18,
+        "FP": 554
+      },
+      {
+        "lo": 0.15,
+        "hi": 0.65,
+        "coverage": 0.12953580097601322,
+        "accuracy": 0.6350271709101742,
+        "precision_like_balanced": 0.49318532912192803,
+        "recall_FAKE_all": 0.162294820402479,
+        "n_decided": 689,
+        "FN": 18,
+        "FP": 293
+      },
+      {
+        "lo": 0.15,
+        "hi": 0.7,
+        "coverage": 0.0678858008956058,
+        "accuracy": 0.6578413166773643,
+        "precision_like_balanced": 0.48954833238630735,
+        "recall_FAKE_all": 0.08758612220089884,
+        "n_decided": 367,
+        "FN": 18,
+        "FP": 139
+      },
+      {
+        "lo": 0.15,
+        "hi": 0.75,
+        "coverage": 0.030848886809159915,
+        "accuracy": 0.6763246212548093,
+        "precision_like_balanced": 0.48550911461057866,
+        "recall_FAKE_all": 0.040309425030788285,
+        "n_decided": 164,
+        "FN": 18,
+        "FP": 51
+      },
+      {
+        "lo": 0.15,
+        "hi": 0.8,
+        "coverage": 0.009893122488832725,
+        "accuracy": 0.5616367613603737,
+        "precision_like_balanced": 0.45297892930850325,
+        "recall_FAKE_all": 0.009894941301648308,
+        "n_decided": 60,
+        "FN": 18,
+        "FP": 14
+      },
+      {
+        "lo": 0.15,
+        "hi": 0.85,
+        "coverage": 0.004754082449449443,
+        "accuracy": 0.4990526173136433,
+        "precision_like_balanced": 0.6059218807334562,
+        "recall_FAKE_all": 0.00356904710797178,
+        "n_decided": 31,
+        "FN": 18,
+        "FP": 1
+      },
+      {
+        "lo": 0.15,
+        "hi": 0.9,
+        "coverage": 0.00277840046437728,
+        "accuracy": 0.20740219426214682,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.0,
+        "n_decided": 22,
+        "FN": 18,
+        "FP": 0
+      },
+      {
+        "lo": 0.15,
+        "hi": 0.95,
+        "coverage": 0.00277840046437728,
+        "accuracy": 0.20740219426214682,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.0,
+        "n_decided": 22,
+        "FN": 18,
+        "FP": 0
+      },
+      {
+        "lo": 0.2,
+        "hi": 0.5,
+        "coverage": 0.47331607598770625,
+        "accuracy": 0.5516544929599873,
+        "precision_like_balanced": 0.49422825198767106,
+        "recall_FAKE_all": 0.5074191109717876,
+        "n_decided": 2674,
+        "FN": 85,
+        "FP": 1275
+      },
+      {
+        "lo": 0.2,
+        "hi": 0.55,
+        "coverage": 0.3619861826752472,
+        "accuracy": 0.5812433356724979,
+        "precision_like_balanced": 0.4953074801549004,
+        "recall_FAKE_all": 0.4066736723674962,
+        "n_decided": 1968,
+        "FN": 85,
+        "FP": 888
+      },
+      {
+        "lo": 0.2,
+        "hi": 0.6,
+        "coverage": 0.24240133779744372,
+        "accuracy": 0.6088917096528271,
+        "precision_like_balanced": 0.49760952647200807,
+        "recall_FAKE_all": 0.28188476421923336,
+        "n_decided": 1315,
+        "FN": 85,
+        "FP": 554
+      },
+      {
+        "lo": 0.2,
+        "hi": 0.65,
+        "coverage": 0.1428808519153027,
+        "accuracy": 0.6117467527825352,
+        "precision_like_balanced": 0.4998766460065142,
+        "recall_FAKE_all": 0.162294820402479,
+        "n_decided": 791,
+        "FN": 85,
+        "FP": 293
+      },
+      {
+        "lo": 0.2,
+        "hi": 0.7,
+        "coverage": 0.0812308518348953,
+        "accuracy": 0.6131442363143423,
+        "precision_like_balanced": 0.5115604619138481,
+        "recall_FAKE_all": 0.08758612220089884,
+        "n_decided": 469,
+        "FN": 85,
+        "FP": 139
+      },
+      {
+        "lo": 0.2,
+        "hi": 0.75,
+        "coverage": 0.044193937748449416,
+        "accuracy": 0.5885876430383912,
+        "precision_like_balanced": 0.5424611289238064,
+        "recall_FAKE_all": 0.040309425030788285,
+        "n_decided": 266,
+        "FN": 85,
+        "FP": 51
+      },
+      {
+        "lo": 0.2,
+        "hi": 0.8,
+        "coverage": 0.023238173428122226,
+        "accuracy": 0.46064228223819287,
+        "precision_like_balanced": 0.5261030350633907,
+        "recall_FAKE_all": 0.009894941301648308,
+        "n_decided": 162,
+        "FN": 85,
+        "FP": 14
+      },
+      {
+        "lo": 0.2,
+        "hi": 0.85,
+        "coverage": 0.01809913338873894,
+        "accuracy": 0.41552714687486275,
+        "precision_like_balanced": 0.5584536450572941,
+        "recall_FAKE_all": 0.00356904710797178,
+        "n_decided": 133,
+        "FN": 85,
+        "FP": 1
+      },
+      {
+        "lo": 0.2,
+        "hi": 0.9,
+        "coverage": 0.01612345140366678,
+        "accuracy": 0.3550350466623194,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.0,
+        "n_decided": 124,
+        "FN": 85,
+        "FP": 0
+      },
+      {
+        "lo": 0.2,
+        "hi": 0.95,
+        "coverage": 0.01612345140366678,
+        "accuracy": 0.3550350466623194,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.0,
+        "n_decided": 124,
+        "FN": 85,
+        "FP": 0
+      },
+      {
+        "lo": 0.25,
+        "hi": 0.5,
+        "coverage": 0.5044016931993831,
+        "accuracy": 0.5445952206626195,
+        "precision_like_balanced": 0.4944294680628547,
+        "recall_FAKE_all": 0.5074191109717876,
+        "n_decided": 2886,
+        "FN": 218,
+        "FP": 1275
+      },
+      {
+        "lo": 0.25,
+        "hi": 0.55,
+        "coverage": 0.3930717998869241,
+        "accuracy": 0.5698446641342843,
+        "precision_like_balanced": 0.5001896109396173,
+        "recall_FAKE_all": 0.4066736723674962,
+        "n_decided": 2180,
+        "FN": 218,
+        "FP": 888
+      },
+      {
+        "lo": 0.25,
+        "hi": 0.6,
+        "coverage": 0.2734869550091207,
+        "accuracy": 0.5893662331717086,
+        "precision_like_balanced": 0.5109378613930912,
+        "recall_FAKE_all": 0.28188476421923336,
+        "n_decided": 1527,
+        "FN": 218,
+        "FP": 554
+      },
+      {
+        "lo": 0.25,
+        "hi": 0.65,
+        "coverage": 0.17396646912697963,
+        "accuracy": 0.580541234195998,
+        "precision_like_balanced": 0.522678822465145,
+        "recall_FAKE_all": 0.162294820402479,
+        "n_decided": 1003,
+        "FN": 218,
+        "FP": 293
+      },
+      {
+        "lo": 0.25,
+        "hi": 0.7,
+        "coverage": 0.11231646904657223,
+        "accuracy": 0.5644233713302717,
+        "precision_like_balanced": 0.5455956083679004,
+        "recall_FAKE_all": 0.08758612220089884,
+        "n_decided": 681,
+        "FN": 218,
+        "FP": 139
+      },
+      {
+        "lo": 0.25,
+        "hi": 0.75,
+        "coverage": 0.07527955496012635,
+        "accuracy": 0.5260368127658068,
+        "precision_like_balanced": 0.5668986991690415,
+        "recall_FAKE_all": 0.040309425030788285,
+        "n_decided": 478,
+        "FN": 218,
+        "FP": 51
+      },
+      {
+        "lo": 0.25,
+        "hi": 0.8,
+        "coverage": 0.054323790639799155,
+        "accuracy": 0.44717602469530077,
+        "precision_like_balanced": 0.5259728044374451,
+        "recall_FAKE_all": 0.009894941301648308,
+        "n_decided": 374,
+        "FN": 218,
+        "FP": 14
+      },
+      {
+        "lo": 0.25,
+        "hi": 0.85,
+        "coverage": 0.049184750600415876,
+        "accuracy": 0.42916742490221776,
+        "precision_like_balanced": 0.5256458021199228,
+        "recall_FAKE_all": 0.00356904710797178,
+        "n_decided": 345,
+        "FN": 218,
+        "FP": 1
+      },
+      {
+        "lo": 0.25,
+        "hi": 0.9,
+        "coverage": 0.04720906861534371,
+        "accuracy": 0.4090782214010833,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.0,
+        "n_decided": 336,
+        "FN": 218,
+        "FP": 0
+      },
+      {
+        "lo": 0.25,
+        "hi": 0.95,
+        "coverage": 0.04720906861534371,
+        "accuracy": 0.4090782214010833,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.0,
+        "n_decided": 336,
+        "FN": 218,
+        "FP": 0
+      },
+      {
+        "lo": 0.3,
+        "hi": 0.5,
+        "coverage": 0.5650502443812047,
+        "accuracy": 0.5430168638328995,
+        "precision_like_balanced": 0.5111156332035145,
+        "recall_FAKE_all": 0.5074191109717876,
+        "n_decided": 3272,
+        "FN": 431,
+        "FP": 1275
+      },
+      {
+        "lo": 0.3,
+        "hi": 0.55,
+        "coverage": 0.45372035106874564,
+        "accuracy": 0.5645039447432543,
+        "precision_like_balanced": 0.525514877802325,
+        "recall_FAKE_all": 0.4066736723674962,
+        "n_decided": 2566,
+        "FN": 431,
+        "FP": 888
+      },
+      {
+        "lo": 0.3,
+        "hi": 0.6,
+        "coverage": 0.33413550619094223,
+        "accuracy": 0.5785707687893267,
+        "precision_like_balanced": 0.5471089625417996,
+        "recall_FAKE_all": 0.28188476421923336,
+        "n_decided": 1913,
+        "FN": 431,
+        "FP": 554
+      },
+      {
+        "lo": 0.3,
+        "hi": 0.65,
+        "coverage": 0.2346150203088012,
+        "accuracy": 0.5674477649463641,
+        "precision_like_balanced": 0.5622661492348093,
+        "recall_FAKE_all": 0.162294820402479,
+        "n_decided": 1389,
+        "FN": 431,
+        "FP": 293
+      },
+      {
+        "lo": 0.3,
+        "hi": 0.7,
+        "coverage": 0.17296502022839375,
+        "accuracy": 0.5523145673640341,
+        "precision_like_balanced": 0.5742797773703628,
+        "recall_FAKE_all": 0.08758612220089884,
+        "n_decided": 1067,
+        "FN": 431,
+        "FP": 139
+      },
+      {
+        "lo": 0.3,
+        "hi": 0.75,
+        "coverage": 0.1359281061419479,
+        "accuracy": 0.5277560277645427,
+        "precision_like_balanced": 0.5665619296047841,
+        "recall_FAKE_all": 0.040309425030788285,
+        "n_decided": 864,
+        "FN": 431,
+        "FP": 51
+      },
+      {
+        "lo": 0.3,
+        "hi": 0.8,
+        "coverage": 0.11497234182162068,
+        "accuracy": 0.4908081026444907,
+        "precision_like_balanced": 0.5206435940035744,
+        "recall_FAKE_all": 0.009894941301648308,
+        "n_decided": 760,
+        "FN": 431,
+        "FP": 14
+      },
+      {
+        "lo": 0.3,
+        "hi": 0.85,
+        "coverage": 0.1098333017822374,
+        "accuracy": 0.48478514345844453,
+        "precision_like_balanced": 0.5136934995520801,
+        "recall_FAKE_all": 0.00356904710797178,
+        "n_decided": 731,
+        "FN": 431,
+        "FP": 1
+      },
+      {
+        "lo": 0.3,
+        "hi": 0.9,
+        "coverage": 0.10785761979716522,
+        "accuracy": 0.4770109160697149,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.0,
+        "n_decided": 722,
+        "FN": 431,
+        "FP": 0
+      },
+      {
+        "lo": 0.3,
+        "hi": 0.95,
+        "coverage": 0.10785761979716522,
+        "accuracy": 0.4770109160697149,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.0,
+        "n_decided": 722,
+        "FN": 431,
+        "FP": 0
+      },
+      {
+        "lo": 0.35,
+        "hi": 0.5,
+        "coverage": 0.6554759877277198,
+        "accuracy": 0.5457552537275387,
+        "precision_like_balanced": 0.5317093371350108,
+        "recall_FAKE_all": 0.5074191109717876,
+        "n_decided": 3857,
+        "FN": 714,
+        "FP": 1275
+      },
+      {
+        "lo": 0.35,
+        "hi": 0.55,
+        "coverage": 0.5441460944152606,
+        "accuracy": 0.5642318919908546,
+        "precision_like_balanced": 0.5505628991077337,
+        "recall_FAKE_all": 0.4066736723674962,
+        "n_decided": 3151,
+        "FN": 714,
+        "FP": 888
+      },
+      {
+        "lo": 0.35,
+        "hi": 0.6,
+        "coverage": 0.42456124953745716,
+        "accuracy": 0.5752260465257403,
+        "precision_like_balanced": 0.5723070539754431,
+        "recall_FAKE_all": 0.28188476421923336,
+        "n_decided": 2498,
+        "FN": 714,
+        "FP": 554
+      },
+      {
+        "lo": 0.35,
+        "hi": 0.65,
+        "coverage": 0.32504076365531626,
+        "accuracy": 0.5661733599511886,
+        "precision_like_balanced": 0.5770601787374557,
+        "recall_FAKE_all": 0.162294820402479,
+        "n_decided": 1974,
+        "FN": 714,
+        "FP": 293
+      },
+      {
+        "lo": 0.35,
+        "hi": 0.7,
+        "coverage": 0.26339076357490876,
+        "accuracy": 0.5559373104504008,
+        "precision_like_balanced": 0.5722028538542062,
+        "recall_FAKE_all": 0.08758612220089884,
+        "n_decided": 1652,
+        "FN": 714,
+        "FP": 139
+      },
+      {
+        "lo": 0.35,
+        "hi": 0.75,
+        "coverage": 0.22635384948846293,
+        "accuracy": 0.5417823907962193,
+        "precision_like_balanced": 0.5519430369239122,
+        "recall_FAKE_all": 0.040309425030788285,
+        "n_decided": 1449,
+        "FN": 714,
+        "FP": 51
+      },
+      {
+        "lo": 0.35,
+        "hi": 0.8,
+        "coverage": 0.2053980851681357,
+        "accuracy": 0.5225316937154633,
+        "precision_like_balanced": 0.5144589924527009,
+        "recall_FAKE_all": 0.009894941301648308,
+        "n_decided": 1345,
+        "FN": 714,
+        "FP": 14
+      },
+      {
+        "lo": 0.35,
+        "hi": 0.85,
+        "coverage": 0.20025904512875242,
+        "accuracy": 0.5200424543960815,
+        "precision_like_balanced": 0.5083149578710999,
+        "recall_FAKE_all": 0.00356904710797178,
+        "n_decided": 1316,
+        "FN": 714,
+        "FP": 1
+      },
+      {
+        "lo": 0.35,
+        "hi": 0.9,
+        "coverage": 0.19828336314368022,
+        "accuracy": 0.5161649105837366,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.0,
+        "n_decided": 1307,
+        "FN": 714,
+        "FP": 0
+      },
+      {
+        "lo": 0.35,
+        "hi": 0.95,
+        "coverage": 0.19828336314368022,
+        "accuracy": 0.5161649105837366,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.0,
+        "n_decided": 1307,
+        "FN": 714,
+        "FP": 0
+      },
+      {
+        "lo": 0.4,
+        "hi": 0.5,
+        "coverage": 0.7553300559059896,
+        "accuracy": 0.5440072195664754,
+        "precision_like_balanced": 0.5384502062045272,
+        "recall_FAKE_all": 0.5074191109717876,
+        "n_decided": 4510,
+        "FN": 1046,
+        "FP": 1275
+      },
+      {
+        "lo": 0.4,
+        "hi": 0.55,
+        "coverage": 0.6440001625935307,
+        "accuracy": 0.5593168152233198,
+        "precision_like_balanced": 0.5567564805014978,
+        "recall_FAKE_all": 0.4066736723674962,
+        "n_decided": 3804,
+        "FN": 1046,
+        "FP": 888
+      },
+      {
+        "lo": 0.4,
+        "hi": 0.6,
+        "coverage": 0.5244153177157272,
+        "accuracy": 0.5670967620637409,
+        "precision_like_balanced": 0.5734484706673564,
+        "recall_FAKE_all": 0.28188476421923336,
+        "n_decided": 3151,
+        "FN": 1046,
+        "FP": 554
+      },
+      {
+        "lo": 0.4,
+        "hi": 0.65,
+        "coverage": 0.42489483183358623,
+        "accuracy": 0.5582674654571722,
+        "precision_like_balanced": 0.5697335361014865,
+        "recall_FAKE_all": 0.162294820402479,
+        "n_decided": 2627,
+        "FN": 1046,
+        "FP": 293
+      },
+      {
+        "lo": 0.4,
+        "hi": 0.7,
+        "coverage": 0.3632448317531788,
+        "accuracy": 0.5495034610945224,
+        "precision_like_balanced": 0.5585109852171326,
+        "recall_FAKE_all": 0.08758612220089884,
+        "n_decided": 2305,
+        "FN": 1046,
+        "FP": 139
+      },
+      {
+        "lo": 0.4,
+        "hi": 0.75,
+        "coverage": 0.3262079176667329,
+        "accuracy": 0.5389509567182202,
+        "precision_like_balanced": 0.538439958804745,
+        "recall_FAKE_all": 0.040309425030788285,
+        "n_decided": 2102,
+        "FN": 1046,
+        "FP": 51
+      },
+      {
+        "lo": 0.4,
+        "hi": 0.8,
+        "coverage": 0.3052521533464057,
+        "accuracy": 0.5258031668016927,
+        "precision_like_balanced": 0.510100961351822,
+        "recall_FAKE_all": 0.009894941301648308,
+        "n_decided": 1998,
+        "FN": 1046,
+        "FP": 14
+      },
+      {
+        "lo": 0.4,
+        "hi": 0.85,
+        "coverage": 0.30011311330702245,
+        "accuracy": 0.5241981704297891,
+        "precision_like_balanced": 0.5056432863064516,
+        "recall_FAKE_all": 0.00356904710797178,
+        "n_decided": 1969,
+        "FN": 1046,
+        "FP": 1
+      },
+      {
+        "lo": 0.4,
+        "hi": 0.9,
+        "coverage": 0.2981374313219503,
+        "accuracy": 0.5216468569259021,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.0,
+        "n_decided": 1960,
+        "FN": 1046,
+        "FP": 0
+      },
+      {
+        "lo": 0.4,
+        "hi": 0.95,
+        "coverage": 0.2981374313219503,
+        "accuracy": 0.5216468569259021,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.0,
+        "n_decided": 1960,
+        "FN": 1046,
+        "FP": 0
+      },
+      {
+        "lo": 0.45,
+        "hi": 0.5,
+        "coverage": 0.8789121959005101,
+        "accuracy": 0.5482930833556899,
+        "precision_like_balanced": 0.5478127737003234,
+        "recall_FAKE_all": 0.5074191109717876,
+        "n_decided": 5305,
+        "FN": 1409,
+        "FP": 1275
+      },
+      {
+        "lo": 0.45,
+        "hi": 0.55,
+        "coverage": 0.7675823025880508,
+        "accuracy": 0.5617594267247366,
+        "precision_like_balanced": 0.5639429838842731,
+        "recall_FAKE_all": 0.4066736723674962,
+        "n_decided": 4599,
+        "FN": 1409,
+        "FP": 888
+      },
+      {
+        "lo": 0.45,
+        "hi": 0.6,
+        "coverage": 0.6479974577102476,
+        "accuracy": 0.5685064016697826,
+        "precision_like_balanced": 0.5747131644538885,
+        "recall_FAKE_all": 0.28188476421923336,
+        "n_decided": 3946,
+        "FN": 1409,
+        "FP": 554
+      },
+      {
+        "lo": 0.45,
+        "hi": 0.65,
+        "coverage": 0.5484769718281065,
+        "accuracy": 0.5619222884547675,
+        "precision_like_balanced": 0.5645213934902278,
+        "recall_FAKE_all": 0.162294820402479,
+        "n_decided": 3422,
+        "FN": 1409,
+        "FP": 293
+      },
+      {
+        "lo": 0.45,
+        "hi": 0.7,
+        "coverage": 0.4868269717476991,
+        "accuracy": 0.5558458801541356,
+        "precision_like_balanced": 0.5496442993781242,
+        "recall_FAKE_all": 0.08758612220089884,
+        "n_decided": 3100,
+        "FN": 1409,
+        "FP": 139
+      },
+      {
+        "lo": 0.45,
+        "hi": 0.75,
+        "coverage": 0.44979005766125324,
+        "accuracy": 0.5487149825401935,
+        "precision_like_balanced": 0.5304649526766252,
+        "recall_FAKE_all": 0.040309425030788285,
+        "n_decided": 2897,
+        "FN": 1409,
+        "FP": 51
+      },
+      {
+        "lo": 0.45,
+        "hi": 0.8,
+        "coverage": 0.42883429334092604,
+        "accuracy": 0.5398332801694474,
+        "precision_like_balanced": 0.5077711766939607,
+        "recall_FAKE_all": 0.009894941301648308,
+        "n_decided": 2793,
+        "FN": 1409,
+        "FP": 14
+      },
+      {
+        "lo": 0.45,
+        "hi": 0.85,
+        "coverage": 0.4236952533015428,
+        "accuracy": 0.5388665968269437,
+        "precision_like_balanced": 0.5041635247130267,
+        "recall_FAKE_all": 0.00356904710797178,
+        "n_decided": 2764,
+        "FN": 1409,
+        "FP": 1
+      },
+      {
+        "lo": 0.45,
+        "hi": 0.9,
+        "coverage": 0.42171957131647064,
+        "accuracy": 0.5371316479212535,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.0,
+        "n_decided": 2755,
+        "FN": 1409,
+        "FP": 0
+      },
+      {
+        "lo": 0.45,
+        "hi": 0.95,
+        "coverage": 0.42171957131647064,
+        "accuracy": 0.5371316479212535,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.0,
+        "n_decided": 2755,
+        "FN": 1409,
+        "FP": 0
+      },
+      {
+        "lo": 0.5,
+        "hi": 0.55,
+        "coverage": 0.888670106687541,
+        "accuracy": 0.562155204272458,
+        "precision_like_balanced": 0.564236556649808,
+        "recall_FAKE_all": 0.4066736723674962,
+        "n_decided": 5360,
+        "FN": 1778,
+        "FP": 888
+      },
+      {
+        "lo": 0.5,
+        "hi": 0.6,
+        "coverage": 0.7690852618097374,
+        "accuracy": 0.5679014483207132,
+        "precision_like_balanced": 0.5707206761272008,
+        "recall_FAKE_all": 0.28188476421923336,
+        "n_decided": 4707,
+        "FN": 1778,
+        "FP": 554
+      },
+      {
+        "lo": 0.5,
+        "hi": 0.65,
+        "coverage": 0.6695647759275964,
+        "accuracy": 0.5624181256287542,
+        "precision_like_balanced": 0.5576197933516415,
+        "recall_FAKE_all": 0.162294820402479,
+        "n_decided": 4183,
+        "FN": 1778,
+        "FP": 293
+      },
+      {
+        "lo": 0.5,
+        "hi": 0.7,
+        "coverage": 0.6079147758471891,
+        "accuracy": 0.5576023336681077,
+        "precision_like_balanced": 0.5422066569683841,
+        "recall_FAKE_all": 0.08758612220089884,
+        "n_decided": 3861,
+        "FN": 1778,
+        "FP": 139
+      },
+      {
+        "lo": 0.5,
+        "hi": 0.75,
+        "coverage": 0.5708778617607433,
+        "accuracy": 0.5520979106705757,
+        "precision_like_balanced": 0.5249647220656075,
+        "recall_FAKE_all": 0.040309425030788285,
+        "n_decided": 3658,
+        "FN": 1778,
+        "FP": 51
+      },
+      {
+        "lo": 0.5,
+        "hi": 0.8,
+        "coverage": 0.5499220974404161,
+        "accuracy": 0.5453007902555056,
+        "precision_like_balanced": 0.5062528705577424,
+        "recall_FAKE_all": 0.009894941301648308,
+        "n_decided": 3554,
+        "FN": 1778,
+        "FP": 14
+      },
+      {
+        "lo": 0.5,
+        "hi": 0.85,
+        "coverage": 0.5447830574010327,
+        "accuracy": 0.5446005456622974,
+        "precision_like_balanced": 0.5032927643091053,
+        "recall_FAKE_all": 0.00356904710797178,
+        "n_decided": 3525,
+        "FN": 1778,
+        "FP": 1
+      },
+      {
+        "lo": 0.5,
+        "hi": 0.9,
+        "coverage": 0.5428073754159606,
+        "accuracy": 0.543273493964088,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.0,
+        "n_decided": 3516,
+        "FN": 1778,
+        "FP": 0
+      },
+      {
+        "lo": 0.5,
+        "hi": 0.95,
+        "coverage": 0.5428073754159606,
+        "accuracy": 0.543273493964088,
+        "precision_like_balanced": 0.5,
+        "recall_FAKE_all": 0.0,
+        "n_decided": 3516,
+        "FN": 1778,
+        "FP": 0
+      }
+    ]
+  },
+  "timing": {
+    "train_fit_seconds": 8.2,
+    "inference_ms_per_text": 1.472
+  }
+}
